@@ -49,7 +49,7 @@ namespace BeerXML.Models
         //public Yeast Yeast { get; set; }
 
         [Required]
-        public virtual ICollection<Water> Waters { get; set; }
+        public virtual List<WaterRecipe> WaterRecipes { get; set; }
 
         //public int Mash Mash { get; set; }
 

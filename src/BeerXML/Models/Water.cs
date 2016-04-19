@@ -49,6 +49,15 @@ namespace BeerXML.Models
 
         public String Notes { get; set; }
 
+        public List<WaterRecipe> WaterRecipes { get; set; }
+    }
+    
+    public class WaterRecipe
+    {
+        public int RecipeId { get; set; }
         public Recipe Recipe { get; set; }
+
+        public int WaterId { get; set; }
+        public Water Water { get; set; }
     }
 }
