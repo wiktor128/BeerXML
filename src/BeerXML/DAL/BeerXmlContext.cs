@@ -11,12 +11,16 @@ namespace BeerXML.Models
 {
     public class BeerXmlContext : DbContext
     {
-        
+        //public BeerXmlContext() : base("BeerXmlContext")
+        //{               
+        //}
+
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Water> Waters { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             //base.OnModelCreating(modelBuilder);
 
 
@@ -34,6 +38,11 @@ namespace BeerXML.Models
                 .HasForeignKey(wr => wr.WaterId);
                 
                 
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            options.UseSqlServer(Startup.Configuration["Data:DefaultConnection:ConnectionString"]);
         }
     }
 }

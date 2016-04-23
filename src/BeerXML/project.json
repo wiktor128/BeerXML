@@ -51,6 +51,6 @@
   },
 
   "data": {
-    "connectionString": "Server=(localdb)\\MSSQLLocalDB;Database=ContosoBooks;Trusted_Connection=True;MultipleActiveResultSets=true"
+    "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=BeerXML;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
 }

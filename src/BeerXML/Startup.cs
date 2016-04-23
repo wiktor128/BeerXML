@@ -9,11 +9,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Data.Entity;
 using BeerXML.Models;
+using BeerXML.DAL;
 
 namespace BeerXML
 {
     public class Startup
     {
+
+        public static IConfiguration Configuration { get; set; }
         public Startup(IHostingEnvironment env)
         {
             // Set up configuration sources.
@@ -21,9 +24,10 @@ namespace BeerXML
                 .AddJsonFile("appsettings.json")
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+        
         }
 
-        public IConfigurationRoot Configuration { get; set; }
+        //public IConfigurationRoot Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -35,7 +39,8 @@ namespace BeerXML
                 .AddSqlServer()
                 .AddDbContext<BeerXmlContext>(options =>
                 {
-                    options.UseSqlServer(Configuration.Get("Data:ConnectionString"));
+                    //options.UseSqlServer(Configuration.Get("Data:ConnectionString"));
+                    options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]);
                 });
         }
 
@@ -65,6 +70,8 @@ namespace BeerXML
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            BeerXMLInitializer.Initialize(app.ApplicationServices);
         }
 
         // Entry point for the application.
