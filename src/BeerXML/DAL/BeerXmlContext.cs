@@ -11,6 +11,7 @@ namespace BeerXML.Models
 {
     public class BeerXmlContext : DbContext
     {
+        
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Water> Waters { get; set; }
 
