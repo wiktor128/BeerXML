@@ -40,7 +40,16 @@
     "**.user",
     "**.vspscc"
   ],
+
   "scripts": {
     "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min" ]
+  },
+
+  "appSettings": {
+    "siteTitle": "Contoso Books"
+  },
+
+  "data": {
+    "connectionString": "Server=(localdb)\\MSSQLLocalDB;Database=ContosoBooks;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
 }

@@ -7,6 +7,8 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Data.Entity;
+using BeerXML.Models;
 
 namespace BeerXML
 {
@@ -28,6 +30,13 @@ namespace BeerXML
         {
             // Add framework services.
             services.AddMvc();
+
+            services.AddEntityFramework()
+                .AddSqlServer()
+                .AddDbContext<BeerXmlContext>(options =>
+                {
+                    options.UseSqlServer(Configuration.Get("Data:ConnectionString"));
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

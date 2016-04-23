@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Metadata.Builders;
 using Microsoft.Data.Entity.Design;
+using BeerXML.Models;
 
 namespace BeerXML.Models
 {
