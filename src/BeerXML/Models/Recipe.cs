@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BeerXML.Models
 {
     public class Recipe // to do conditional
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RecipeID { get; set; }
 
         [Required]
@@ -49,7 +51,7 @@ namespace BeerXML.Models
         //public Yeast Yeast { get; set; }
 
         [Required]
-        public virtual List<WaterRecipe> WaterRecipes { get; set; }
+        public virtual List<WaterRecipe> WaterRecipe { get; set; }
 
         //public int Mash Mash { get; set; }
 

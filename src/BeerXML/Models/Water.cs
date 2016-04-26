@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BeerXML.Models
 {
     public class Water
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int WaterId { get; set; }
 
         [Required]
@@ -49,7 +51,7 @@ namespace BeerXML.Models
 
         public String Notes { get; set; }
 
-        public List<WaterRecipe> WaterRecipes { get; set; }
+        public List<WaterRecipe> WaterRecipe { get; set; }
     }
     
     public class WaterRecipe

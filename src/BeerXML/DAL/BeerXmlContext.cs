@@ -17,6 +17,7 @@ namespace BeerXML.Models
 
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Water> Waters { get; set; }
+        public DbSet<WaterRecipe> WatersRecipes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,16 +30,16 @@ namespace BeerXML.Models
 
             modelBuilder.Entity<WaterRecipe>()
                 .HasOne(wr => wr.Recipe)
-                .WithMany(r => r.WaterRecipes)
+                .WithMany(r => r.WaterRecipe)
                 .HasForeignKey(wr => wr.RecipeId);
 
             modelBuilder.Entity<WaterRecipe>()
                 .HasOne(wr => wr.Water)
-                .WithMany(w => w.WaterRecipes)
+                .WithMany(w => w.WaterRecipe)
                 .HasForeignKey(wr => wr.WaterId);
                 
                 
-        }
+        }// still not sure how it works xD
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {

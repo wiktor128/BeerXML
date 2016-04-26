@@ -1,0 +1,86 @@
+﻿@model BeerXML.Models.RecipeViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h3 class="ui header">New Recipe</h3>
+<form class="ui styled accordion" asp-action="Index" asp-controller="AddRecipeController">
+    <div class="title active">
+        <i class="dropdown icon"></i>
+        Main
+    </div>
+    <div class="content active">
+        <div class="ui form" >
+            <div class="required field">
+                <label asp-for="Recipe.Name">Name</label>
+                <input asp-for="Recipe.Name" type="text" placeholder="Name" data-content="Name of the recipe." data-position="top right" required>
+            </div>
+
+            <div class="required field">
+                <label asp-for="Recipe.Version">Version</label>
+                <input asp-for="Recipe.Version" type="number" min="1" placeholder="Version" required>
+            </div>
+
+            <div class="required field">
+                <label asp-for="Recipe.Type">Type</label>
+                <select asp-for="Recipe.Type" class="ui search dropdown" id="new_recipe_type" enables-conditional="true" required>
+                    <option value="">Select Type</option>
+                    <option value="Extract">Extract</option>
+                    <option value="Partial Mash">Partial Mash</option>
+                    <option value="All Grain">All Grain</option>
+                </select>
+            </div>
+
+            <div class="required field">
+                <label asp-for="Recipe.Brewer">Brewer</label>
+                <input asp-for="Recipe.Brewer" type="text" placeholder="Brewer" required>
+            </div>
+
+            <div class="field">
+                <label asp-for="Recipe.AsstBrewer">Assistant Brewer</label>
+                <input asp-for="Recipe.AsstBrewer"type="text" placeholder="Assistant Brewer">
+            </div>
+
+            <div class="required field">
+                <label asp-for="Recipe.BatchSize">Batch Size</label>
+                <input asp-for="Recipe.BatchSize" type="number" min="0.1" step="0.1" placeholder="Batch Size" required>
+            </div>
+
+            <div class="required field">
+                <label asp-for="Recipe.BoilSize">Boil Size</label>
+                <input asp-for="Recipe.BoilSize" type="number" min="0.1" step="0.1" placeholder="Boil Size" required>
+            </div>
+
+            <div class="required field">
+                <label asp-for="Recipe.BoilTime">Boil Time</label>
+                <input asp-for="Recipe.BoilTime" type="number" min="0" placeholder="Boil Time" required>
+            </div>
+
+            <div class="required disabled field" depend-on="new_recipe_type" depend-type="blacklist" depend-val="Extract">
+                <label asp-for="Recipe.Efficiency">Efficiency</label>
+                <input asp-for="Recipe.Efficiency" type="number" min="0" step="0.1" placeholder="Efficiency" required>
+            </div>
+
+            <div class="field">
+                <label asp-for="Recipe.Notes">Notes</label>
+                <textarea asp-for="Recipe.Notes" rows="2" placeholder="Notes"></textarea>
+            </div>
+
+            <div class="field">
+                <label asp-for="Recipe.TasteNotes">Taste Notes</label>
+                <textarea asp-for="Recipe.TasteNotes" rows="2" placeholder="Taste Notes"></textarea>
+            </div>
+
+            <div class="field">
+                <label asp-for="Recipe.TasteRating">Taste Rating</label>
+                <input asp-for="Recipe.TasteRating" type="number" min="0" max="50" step="0.1" placeholder="Taste Rating">
+            </div>
+
+            <button class="ui inverted olive button" type="submit">
+                Submit
+            </button>
+        </div>
+    </div>
+</form>
+

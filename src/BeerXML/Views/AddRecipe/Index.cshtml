@@ -1,0 +1,26 @@
+﻿@model BeerXML.Models.RecipeViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h3 class="ui header">New Recipe</h3>
+<form class="ui styled accordion"  method="post" asp-action="Index" asp-controller="AddRecipeController">
+    <div class="title active">
+        <i class="dropdown icon"></i>
+        Main
+    </div>
+    <div class="content active">
+        <div class="ui form">
+ 
+    
+            @Html.EditorFor(m => m.Recipe)
+            @Html.EditorFor(m => m.Water)
+
+            <button class="ui inverted olive button" type="submit">
+                Submit
+            </button>
+        </div>
+    </div>
+</form>
+

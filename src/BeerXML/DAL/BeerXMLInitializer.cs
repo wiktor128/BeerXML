@@ -16,11 +16,9 @@ namespace BeerXML.DAL
 
             context.Database.Migrate();
 
-            if (!context.Waters.Any())
+            if (!context.Waters.Any() && !context.Recipes.Any())
             {
-                //var austen = context.Authors.Add(
-                //    new Author { LastName = "Austen", FirstName = "Jane" }).Entity;
-                context.Waters.AddRange(
+                var exampleWater = context.Waters.Add(
                     new Water
                     {
                         //WaterId = 1,
@@ -35,10 +33,60 @@ namespace BeerXML.DAL
                         Magnesium = 345,
                         Ph = 4,
                         Notes = "Better than tap water."
-                        // public List<WaterRecipe> WaterRecipes { get; set; }
+                        //WaterRecipes
                     }
-                );
+                ).Entity;
 
+                var exampleRecipe = context.Recipes.Add(
+                    new Recipe
+                    {
+                      //RecipeID = ,
+                        Name = "Cheap Beer",
+                        Version = 1,
+                        Type = "Grain",
+                        Brewer = "Me",
+                        AsstBrewer = "None",
+                        BatchSize = 111,
+                        BoilSize = 11,
+                        BoilTime = 11,
+                        Efficiency = 1,
+                     // WaterRecipes = ,
+                        Notes = "Good for breakfast",
+                        TasteNotes = "It taste like mushrooms",
+                        TasteRating = 10,
+                        OG = 12,
+                        FG = 2,
+                        FermentationStages = 2,
+                        PrimaryAges = 23,
+                        PrimaryTemp = 32,
+                        SecondaryAge = 653,
+                        SecondaryTemp = 346,
+                        TertiaryAge = 346,
+                        TertiaryTemp = 346,
+                        Age = 23,
+                        AgeTemp = 33,
+                        Date = DateTime.Today.ToString(),
+                        Carbonation = 90,
+                        ForcedCarbonation = false,
+                        PrimingSugarName = "Diamant",
+                        CarbonationTemp = 44,
+                        PrimingSugarEquiv = 3,
+                        KegPrimingFactor = 3
+                    }
+                ).Entity;
+
+                var exampleWatersRecipes = context.WatersRecipes.Add(
+                    new WaterRecipe
+                    {
+                        Recipe = exampleRecipe,
+                        RecipeId = exampleRecipe.RecipeID,
+                        Water = exampleWater,
+                        WaterId = exampleWater.WaterId
+                    }
+                ).Entity;
+
+                //exampleRecipe.WaterRecipe = exampleWatersRecipes;
+          
             }
 
             try

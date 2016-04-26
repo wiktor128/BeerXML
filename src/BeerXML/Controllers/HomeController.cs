@@ -14,6 +14,7 @@ namespace BeerXML.Controllers
         public IActionResult Index()
         {
             List<Water> waters = db.Waters.ToList();
+            List<Recipe> recipes = db.Recipes.ToList();
             return View();
         }
 
