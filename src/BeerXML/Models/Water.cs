@@ -9,6 +9,7 @@ namespace BeerXML.Models
 {
     public class Water
     {
+        [ScaffoldColumn(false)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int WaterId { get; set; }
 
