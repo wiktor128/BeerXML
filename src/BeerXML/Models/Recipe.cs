@@ -50,7 +50,9 @@ namespace BeerXML.Models
 
         [Required]
         public virtual List<HopRecipe> HopRecipe { get; set; }
-        //public Fermentables Fermentables { get; set; }
+        
+        [Required]
+        public virtual List<FermentableRecipe> FermentableRecipe { get; set; }
         //public Miscs Misc { get; set; }
         //public Yeast Yeast { get; set; }
 

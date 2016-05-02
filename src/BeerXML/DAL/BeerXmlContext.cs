@@ -21,7 +21,12 @@ namespace BeerXML.Models
         public DbSet<WaterRecipe> WatersRecipes { get; set; }
 
         public DbSet<Hop> Hops { get; set; }
-        public DbSet<HopRecipe> HopRecipe { get; set; }
+        public DbSet<HopRecipe> HopRecipes { get; set; }
+
+        public DbSet<Fermentable> Fermentable { get; set; }
+        public DbSet<FermentableRecipe> FermentableRecipes { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,7 +34,7 @@ namespace BeerXML.Models
             //base.OnModelCreating(modelBuilder);
 
 
-            //---- WaterRecipe ----
+//---- WaterRecipe ----
             modelBuilder.Entity<WaterRecipe>()
                 .HasKey(wr => new { wr.RecipeId, wr.WaterId });
 
@@ -43,7 +48,7 @@ namespace BeerXML.Models
                 .WithMany(w => w.WaterRecipe)
                 .HasForeignKey(wr => wr.WaterId);
 
-            //---- HopRecipe ----
+//---- HopRecipe ----
             modelBuilder.Entity<HopRecipe>()
                 .HasKey(hr => new { hr.RecipeId, hr.HopId });
 
@@ -56,6 +61,20 @@ namespace BeerXML.Models
                 .HasOne(hr => hr.Hop)
                 .WithMany(h => h.HopRecipe)
                 .HasForeignKey(hr => hr.HopId);
+
+//---- FermentableRecipe ----
+            modelBuilder.Entity<FermentableRecipe>()
+                .HasKey(fr => new { fr.RecipeId, fr.FermentableId });
+
+            modelBuilder.Entity<FermentableRecipe>()
+                .HasOne(fr => fr.Recipe)
+                .WithMany(r => r.FermentableRecipe)
+                .HasForeignKey(fr => fr.RecipeId);
+
+            modelBuilder.Entity<FermentableRecipe>()
+                .HasOne(fr => fr.Fermentable)
+                .WithMany(f => f.FermentableRecipe)
+                .HasForeignKey(fr => fr.FermentableId);
 
 
         }// still not sure how it works xD
