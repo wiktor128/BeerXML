@@ -26,7 +26,8 @@ namespace BeerXML.Models
 
         //public Style Style { get; set; }
 
-        //public Equipment Equipment{ get; set; }
+        [Required]
+        public virtual List<EquipmentRecipe> EquipmentRecipe { get; set; }
 
         [Required]
         public string Brewer { get; set; }
