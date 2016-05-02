@@ -112,7 +112,7 @@ namespace BeerXML.Models
 
 //---- EquipmentRecipe ----
             modelBuilder.Entity<EquipmentRecipe>()
-                .HasKey(er => new { er.RecipeId, er.MiscId });
+                .HasKey(er => new { er.RecipeId, er.EquipmentId });
 
             modelBuilder.Entity<EquipmentRecipe>()
                 .HasOne(er => er.Recipe)
@@ -120,9 +120,9 @@ namespace BeerXML.Models
                 .HasForeignKey(er => er.RecipeId);
 
             modelBuilder.Entity<EquipmentRecipe>()
-                .HasOne(er => er.Misc)
+                .HasOne(er => er.Equipment)
                 .WithMany(e => e.EquipmentRecipe)
-                .HasForeignKey(er => er.MiscId);
+                .HasForeignKey(er => er.EquipmentId);
 
 
         }// still not sure how it works xD
