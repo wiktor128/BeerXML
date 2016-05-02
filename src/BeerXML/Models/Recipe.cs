@@ -22,7 +22,7 @@ namespace BeerXML.Models
         public int Version { get; set; }
 
         [Required]
-        public string Type { get; set; }
+        public string Type { get; set; } // todo validation by list
 
         //public Style Style { get; set; }
 
@@ -48,7 +48,8 @@ namespace BeerXML.Models
         [Range(0, 100)]
         public float Efficiency { get; set; } // Conditional, depend on  Type
 
-        //public Hope Hops { get; set; }
+        [Required]
+        public virtual List<HopRecipe> HopRecipe { get; set; }
         //public Fermentables Fermentables { get; set; }
         //public Miscs Misc { get; set; }
         //public Yeast Yeast { get; set; }

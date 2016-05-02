@@ -9,5 +9,6 @@ namespace BeerXML.Models
     {
         public Recipe Recipe { get; set; }
         public Water Water { get; set; }
+        public Hop Hop { get; set; }
     }
 }
