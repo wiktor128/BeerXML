@@ -93,6 +93,20 @@ namespace BeerXML.Models
                 .WithMany(y => y.YeastRecipe)
                 .HasForeignKey(yr => yr.YeastId);
 
+//---- MiscRecipe ----
+            modelBuilder.Entity<MiscRecipe>()
+                .HasKey(mr => new { mr.RecipeId, mr.MiscId });
+
+            modelBuilder.Entity<MiscRecipe>()
+                .HasOne(mr => mr.Recipe)
+                .WithMany(r => r.MiscRecipe)
+                .HasForeignKey(mr => mr.RecipeId);
+
+            modelBuilder.Entity<MiscRecipe>()
+                .HasOne(mr => mr.Misc)
+                .WithMany(m => m.MiscRecipe)
+                .HasForeignKey(mr => mr.MiscId);
+
 
         }// still not sure how it works xD
 
