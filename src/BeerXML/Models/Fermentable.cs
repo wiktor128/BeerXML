@@ -11,7 +11,7 @@ namespace BeerXML.Models
     {
         [ScaffoldColumn(false)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int FermentableID { get; set; }
+        public int FermentableId { get; set; }
 
         [Required]
         public string Name { get; set; }

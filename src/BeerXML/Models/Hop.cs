@@ -12,7 +12,7 @@ namespace BeerXML.Models
     {
         [ScaffoldColumn(false)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int HopID { get; set; }
+        public int HopId { get; set; }
 
         [Required]
         public string Name { get; set; }

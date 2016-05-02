@@ -79,7 +79,7 @@ namespace BeerXML.DAL
                     new WaterRecipe
                     {
                         Recipe = exampleRecipe,
-                        RecipeId = exampleRecipe.RecipeID,
+                        RecipeId = exampleRecipe.RecipeId,
                         Water = exampleWater,
                         WaterId = exampleWater.WaterId
                     }

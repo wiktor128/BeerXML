@@ -11,5 +11,6 @@ namespace BeerXML.Models
         public Water Water { get; set; }
         public Hop Hop { get; set; }
         public Fermentable Fermentable { get; set; }
+        public Yeast Yeast { get; set; }
     }
 }

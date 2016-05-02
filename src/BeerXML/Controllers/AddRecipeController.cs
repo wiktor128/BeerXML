@@ -41,7 +41,7 @@ namespace BeerXML.Controllers
             db.WatersRecipes.Add(new WaterRecipe()
             {
                 Recipe = recipeEnt,
-                RecipeId = recipeEnt.RecipeID,
+                RecipeId = recipeEnt.RecipeId,
                 Water = waterEnt,
                 WaterId = waterEnt.WaterId
             });

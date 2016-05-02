@@ -13,7 +13,7 @@ namespace BeerXML.Models
     {
         [ScaffoldColumn(false)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int RecipeID { get; set; }
+        public int RecipeId { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -54,7 +54,9 @@ namespace BeerXML.Models
         [Required]
         public virtual List<FermentableRecipe> FermentableRecipe { get; set; }
         //public Miscs Misc { get; set; }
-        //public Yeast Yeast { get; set; }
+        
+        [Required]
+        public virtual List<YeastRecipe> YeastRecipe { get; set; }
 
         [Required]
         public virtual List<WaterRecipe> WaterRecipe { get; set; }
