@@ -1,8 +1,14 @@
 ﻿// Write your Javascript code.
 
 $(document).ready(function () {
+    //slide-out menu service
     $('.button-collapse').sideNav();
     $('.collapsible').collapsible();
+
+
+    //$(document).ready(function () {
+    //    $('ul.tabs').tabs();
+    //});
 
     //if (typeof DialogText !== 'undefined') {
     //    Materialize.toast(DialogText, 14000);
@@ -31,5 +37,21 @@ $(document).ready(function () {
             }
         }
     });
+
+
+    //tabs next and previous button service, works with one tabs per page
+    $('.tab-next').on('click', function (e) {
+        var currentHref = $('ul.tabs > li.tab > a.active').attr('href');
+        var nextHref = parseInt(currentHref.substr(4)) + 1;
+        $('ul.tabs').tabs('select_tab', 'tab' + nextHref);
+        //$('ul.tabs').tabs('select_tab', 'tab2');
+    })
+    $('.tab-prev').on('click', function (e) {
+        var currentHref = $('ul.tabs > li.tab > a.active').attr('href');
+        var prevHref = parseInt(currentHref.substr(4)) - 1;
+        $('ul.tabs').tabs('select_tab', 'tab' + prevHref);
+        //$('ul.tabs').tabs('select_tab', 'tab2');
+    })
+    
 
 });

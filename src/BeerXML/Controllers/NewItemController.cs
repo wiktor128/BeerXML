@@ -244,5 +244,36 @@ namespace BeerXML.Controllers
                 return View();
             }
         }
+
+        public IActionResult Recipe()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Recipe(RecipeViewModel recipeViewModel)
+        {
+            var recipeEnt = db.Recipes.Add(recipeViewModel.Recipe).Entity;
+            var waterEnt = db.Waters.Add(recipeViewModel.Water).Entity;
+
+            db.WatersRecipes.Add(new WaterRecipe()
+            {
+                Recipe = recipeEnt,
+                RecipeId = recipeEnt.RecipeId,
+                Water = waterEnt,
+                WaterId = waterEnt.WaterId
+            });
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+
+            return View();
+        }
     }
 }
