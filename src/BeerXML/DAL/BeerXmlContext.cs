@@ -32,6 +32,9 @@ namespace BeerXML.Models
         public DbSet<Equipment> Equipment { get; set; }
         public DbSet<EquipmentRecipe> EquipmentRecipe { get; set; }
 
+        public DbSet<Misc> Misc { get; set; }
+        public DbSet<MiscRecipe> MiscRecipe { get; set; }
+
         public DbSet<Style> Style { get; set; }
 
 

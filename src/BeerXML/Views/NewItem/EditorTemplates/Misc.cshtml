@@ -1,0 +1,37 @@
+﻿@model BeerXML.Models.Misc
+
+<div class="row">
+    <div class="input-field col m9 s12">
+        <input asp-for="Name" class="validate" type="text" required>
+        <label asp-for="Name">Name</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Version" class="validate" type="number" required>
+        <label asp-for="Version">Version</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="Time" class="validate" type="number" required>
+        <label asp-for="Time">Time</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Amount" class="validate" type="number" required>
+        <label asp-for="Amount">Amount</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="AmountIsWeight" class="validate filled-in" type="checkbox" required>
+        <label asp-for="AmountIsWeight">AmountIsWeight</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="UseFor" class="validate" type="text" required>
+        <label asp-for="UseFor">UseFor</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea asp-for="Notes" class="materialize-textarea" length="120" type="text" ></textarea>
+        <label asp-for="Notes">Notes</label>
+    </div>
+</div>

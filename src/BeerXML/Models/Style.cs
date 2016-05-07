@@ -67,15 +67,16 @@ namespace BeerXML.Models
         [Range(0, float.MaxValue, ErrorMessage = "The value must be greater than 0")]
         public float IbuMax { get; set; }
 
-        [Required]
-        [Display(Name = "Color Min")]
-        [Range(0, float.MaxValue, ErrorMessage = "The value must be greater than 0")]
-        public float ColorMax { get; set; }
 
         [Required]
         [Display(Name = "Color Max")]
         [Range(0, float.MaxValue, ErrorMessage = "The value must be greater than 0")]
         public float ColorMin { get; set; }
+
+        [Required]
+        [Display(Name = "Color Min")]
+        [Range(0, float.MaxValue, ErrorMessage = "The value must be greater than 0")]
+        public float ColorMax { get; set; }
 
         [Display(Name = "Carb Min")]
         [Range(0, float.MaxValue, ErrorMessage = "The value must be greater than 0")]

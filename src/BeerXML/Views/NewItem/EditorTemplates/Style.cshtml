@@ -1,0 +1,111 @@
+﻿@model BeerXML.Models.Style
+
+<div class="row">
+    <div class="input-field col m6 s12">
+        <input asp-for="Name" class="validate" type="text" required>
+        <label asp-for="Name">Name</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Version" class="validate" type="text" required>
+        <label asp-for="Version">Version</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Category" class="validate" type="text" required>
+        <label asp-for="Category">Category</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="CategoryNumber" class="validate" type="number" required>
+        <label asp-for="CategoryNumber">Category Number</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="StyleLetter" class="validate" type="text" required>
+        <label asp-for="StyleLetter">Style Letter</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="StyleGuide" class="validate" type="text" required>
+        <label asp-for="StyleGuide">Style Guide</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Type" class="validate" type="text" required>
+        <label asp-for="Type">Type</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="OgMin" class="validate" type="number" required>
+        <label asp-for="OgMin"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="OgMax" class="validate" type="number" required>
+        <label asp-for="OgMax"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="FgMin" class="validate" type="number" required>
+        <label asp-for="FgMin"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="FgMax" class="validate" type="number" required>
+        <label asp-for="FgMax"></label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="IbuMin" class="validate" type="number" required>
+        <label asp-for="IbuMin"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="IbuMax" class="validate" type="number" required>
+        <label asp-for="IbuMax"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="ColorMin" class="validate" type="number" required>
+        <label asp-for="ColorMin"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="ColorMax" class="validate" type="number" required>
+        <label asp-for="ColorMax"></label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="CarbMin" class="validate" type="number" required>
+        <label asp-for="CarbMin"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="CarbMax" class="validate" type="number" required>
+        <label asp-for="CarbMax"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="AbvMin" class="validate" type="number" required>
+        <label asp-for="AbvMin"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="AbvMax" class="validate" type="number" required>
+        <label asp-for="AbvMax"></label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea asp-for="Notes" class="materialize-textarea" length="120" type="text"></textarea>
+        <label asp-for="Notes">Notes</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="Profile" class="validate" type="text" >
+        <label asp-for="Profile"></label>
+    </div>
+    <div class="input-field col m9 s12">
+        <input asp-for="Ingredients" class="validate" type="text">
+        <label asp-for="Ingredients"></label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <input asp-for="Examples" class="validate" type="text">
+        <label asp-for="Examples"></label>
+    </div>
+</div>

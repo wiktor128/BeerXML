@@ -16,8 +16,8 @@ namespace BeerXML.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            List<Water> waters = db.Waters.ToList();
-            List<Recipe> recipes = db.Recipes.ToList();
+            //List<Water> waters = db.Waters.ToList();
+            //List<Recipe> recipes = db.Recipes.ToList();
             return View();
         }
         
@@ -68,9 +68,9 @@ namespace BeerXML.Controllers
         {
             if (db.Waters.Any(w => w.Name == water.Name))
             {
-                ViewData["StatusVar"] = "Water with same name currently exist in database.";
-                ViewBag.DialogText = "Water with same name currently exist in database.";
-                ViewBag.DialogValue = "BAD";
+                //ViewData["StatusVar"] = "Water with same name currently exist in database.";
+                //ViewBag.DialogText = "Water with same name currently exist in database.";
+                //ViewBag.DialogValue = "BAD";
                 return View();
             }
             else
@@ -84,10 +84,87 @@ namespace BeerXML.Controllers
                 {
                     throw;
                 }
-                ViewData["StatusVar"] = "Water successfully added.";
+               // ViewData["StatusVar"] = "Water successfully added.";
                 return View();
             }
             
+        }
+
+        public IActionResult Hop()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Hop(Hop hop)
+        {
+            if (db.Waters.Any(w => w.Name == hop.Name))
+            {
+                return View();
+            }
+            else
+            {
+                try
+                {
+                    db.Hops.Add(hop);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                return View();
+            }
+        }
+        public IActionResult Misc()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Misc(Misc misc)
+        {
+            if (db.Waters.Any(w => w.Name == misc.Name))
+            {
+                return View();
+            }
+            else
+            {
+                try
+                {
+                    db.Misc.Add(misc);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                return View();
+            }
+        }
+
+        public IActionResult Style()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Style(Style style)
+        {
+            if (db.Waters.Any(w => w.Name == style.Name))
+            {
+                return View();
+            }
+            else
+            {
+                try
+                {
+                    db.Style.Add(style);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                return View();
+            }
         }
     }
 }

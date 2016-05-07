@@ -1,0 +1,16 @@
+﻿@model BeerXML.Models.Hop
+
+@{
+    ViewData["Title"] = "Add Hop Item";
+}
+
+<form class="" method="post" asp-action="Hop" asp-controller="NewItem">
+    @Html.EditorFor(m => m)
+
+    <div class="row right-align">
+        <button class="waves-effect waves-light btn" type="submit">
+            <i class="material-icons left">send</i>
+            Submit
+        </button>
+    </div>
+</form>
