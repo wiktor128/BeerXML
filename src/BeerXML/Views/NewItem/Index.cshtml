@@ -5,36 +5,15 @@
 }
 
 <h3 class="ui header">New Recipe</h3>
-<form class="ui styled accordion"  method="post" asp-action="Index" asp-controller="AddRecipeController">
-    <div class="ui styled accordin">
-        <div class="title active">
-            <i class="dropdown icon"></i>
-            Main
-        </div>
-        <div class="content active">
-            <div class="ui form">
-                @Html.EditorFor(m => m.Recipe)
-            
-            </div>
-        </div>
-        <div class="title">
-            <i class="dropdown icon"></i>
-            Water
-        </div>
-        <div class="content">
-            <div class="ui form">
-                @Html.EditorFor(m => m.Water)
-            </div>
-        </div>
-        <div class="title active">
-            <i class="dropdown icon"></i>
-            Send form data
-        </div>
-        <div class="content active">
-            <button class="ui inverted olive button" type="submit">
-                Submit
-            </button>
-        </div>
+<form class=""  method="post" asp-action="Index" asp-controller="NewItem">
+    @Html.EditorFor(m => m.Recipe)
+    <h3 class="ui header">Waters</h3>
+    @Html.EditorFor(m => m.Water)
+    <div class="row right-align">
+        <button class="waves-effect waves-light btn" type="submit">
+            <i class="material-icons left">send</i>
+            Submit
+        </button>
     </div>
 </form>
 

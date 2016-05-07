@@ -97,7 +97,7 @@ namespace BeerXML.Controllers
         [HttpPost]
         public IActionResult Hop(Hop hop)
         {
-            if (db.Waters.Any(w => w.Name == hop.Name))
+            if (db.Hops.Any(w => w.Name == hop.Name))
             {
                 return View();
             }
@@ -122,7 +122,7 @@ namespace BeerXML.Controllers
         [HttpPost]
         public IActionResult Misc(Misc misc)
         {
-            if (db.Waters.Any(w => w.Name == misc.Name))
+            if (db.Misc.Any(w => w.Name == misc.Name))
             {
                 return View();
             }
@@ -148,7 +148,7 @@ namespace BeerXML.Controllers
         [HttpPost]
         public IActionResult Style(Style style)
         {
-            if (db.Waters.Any(w => w.Name == style.Name))
+            if (db.Style.Any(w => w.Name == style.Name))
             {
                 return View();
             }
@@ -157,6 +157,84 @@ namespace BeerXML.Controllers
                 try
                 {
                     db.Style.Add(style);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                return View();
+            }
+        }
+        public IActionResult Yeast()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Yeast(Yeast yeast)
+        {
+            if (db.Yeast.Any(w => w.Name == yeast.Name))
+            {
+                return View();
+            }
+            else
+            {
+                try
+                {
+                    db.Yeast.Add(yeast);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                return View();
+            }
+        }
+
+        public IActionResult Equipment()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Equipment(Equipment equipment)
+        {
+            if (db.Equipment.Any(w => w.Name == equipment.Name))
+            {
+                return View();
+            }
+            else
+            {
+                try
+                {
+                    db.Equipment.Add(equipment);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                return View();
+            }
+        }
+
+        public IActionResult Fermentable()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Fermentable(Fermentable fermentable)
+        {
+            if (db.Fermentable.Any(w => w.Name == fermentable.Name))
+            {
+                return View();
+            }
+            else
+            {
+                try
+                {
+                    db.Fermentable.Add(fermentable);
                     db.SaveChanges();
                 }
                 catch (Exception)

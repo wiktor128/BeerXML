@@ -1,0 +1,83 @@
+﻿@model BeerXML.Models.Yeast
+
+<div class="row">
+    <div class="input-field col m9 s12">
+        <input asp-for="Name" class="validate" type="text" required>
+        <label asp-for="Name"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Version" class="validate" type="number" required>
+        <label asp-for="Version"></label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="Type" class="validate" type="text" required>
+        <label asp-for="Type"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Form" class="validate" type="text" required>
+        <label asp-for="Form"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Amount" class="validate" type="number" required>
+        <label asp-for="Amount"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="AmountIsWeight" class="validate filled-in" type="checkbox">
+        <label asp-for="AmountIsWeight"></label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="Laboratory" class="validate" type="text" required>
+        <label asp-for="Laboratory"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="ProductID" class="validate" type="text" required>
+        <label asp-for="ProductID"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="MinTemperature" class="validate" type="number" required>
+        <label asp-for="MinTemperature"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="MaxTemperature" class="validate" type="number" required>
+        <label asp-for="MaxTemperature"></label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="Flocculation" class="validate" type="text" required>
+        <label asp-for="Flocculation"></label>
+    </div>
+    <div class="range-field col m9 s12">
+        <label asp-for="Attenuation"></label>
+        <input asp-for="Attenuation" class="validate" type="range">
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea asp-for="Notes" class="materialize-textarea" length="120" type="text" ></textarea>
+        <label asp-for="Notes">Notes</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="BestFor" class="validate" type="text" required>
+        <label asp-for="BestFor"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="TimesCultured" class="validate" type="number" required>
+        <label asp-for="TimesCultured"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="MaxReuse" class="validate" type="number" required>
+        <label asp-for="MaxReuse"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="AddToSecondary" class="validate filled-in" type="checkbox">
+        <label asp-for="AddToSecondary"></label>
+    </div>
+</div>

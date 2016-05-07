@@ -1,0 +1,79 @@
+﻿@model BeerXML.Models.Equipment
+
+<div class="row">
+    <div class="input-field col m9 s12">
+        <input asp-for="Name" class="validate" type="text" required>
+        <label asp-for="Name">Name</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Version" class="validate" type="number" required>
+        <label asp-for="Version">Version</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="BoilSize" class="validate" type="number" required>
+        <label asp-for="BoilSize"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="BatchSize" class="validate" type="number" required>
+        <label asp-for="BatchSize"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="TunVolume" class="validate" type="number" required>
+        <label asp-for="TunVolume"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="TunWeight" class="validate" type="number" required>
+        <label asp-for="TunWeight"></label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="TunSpecificHeat" class="validate" type="number" required>
+        <label asp-for="TunSpecificHeat"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="TopUpWater" class="validate" type="number" required>
+        <label asp-for="TopUpWater"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="TrubChillerLoss" class="validate" type="number" required>
+        <label asp-for="TrubChillerLoss"></label>
+    </div>
+    <div class="range-field col m3 s12">
+        <label asp-for="EvapRate"></label>
+        <input asp-for="EvapRate" class="validate" type="range">
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="BoilTime" class="validate" type="number" required>
+        <label asp-for="BoilTime"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="CalcBoilVolume" class="validate filled-in" type="checkbox" required>
+        <label asp-for="CalcBoilVolume"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="LauterDeadspace" class="validate" type="number" required>
+        <label asp-for="LauterDeadspace"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="TopUpKettle" class="validate" type="number" required>
+        <label asp-for="TopUpKettle"></label>
+    </div>
+</div>
+<div class="row">
+    <div class="range-field col s12">
+        <label asp-for="HopUtilization"></label>
+        <input asp-for="HopUtilization" class="validate" type="range">
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea asp-for="Notes" class="materialize-textarea" length="120" type="text" ></textarea>
+        <label asp-for="Notes">Notes</label>
+    </div>
+</div>

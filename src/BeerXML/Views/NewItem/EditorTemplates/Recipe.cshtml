@@ -1,66 +1,143 @@
 ﻿@model BeerXML.Models.Recipe
 
-<div class="required field">
-    <label asp-for="Name">Name</label>
-    <input asp-for="Name" type="text" placeholder="Name" data-content="Name of the recipe." data-position="top right" required>
+<div class="row">
+    <div class="input-field col m9 s12">
+        <input asp-for="Name" class="validate" type="text" required>
+        <label asp-for="Name"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Version" class="validate" type="number" required>
+        <label asp-for="Version"></label>
+    </div>
 </div>
-
-<div class="required field">
-    <label asp-for="Version">Version</label>
-    <input asp-for="Version" type="number" min="1" placeholder="Version" required>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="Type" class="validate" type="text" required>
+        <label asp-for="Type"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Brewer" class="validate" type="text" required>
+        <label asp-for="Brewer"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="AsstBrewer" class="validate" type="text" >
+        <label asp-for="AsstBrewer"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="BatchSize" class="validate" type="number">
+        <label asp-for="BatchSize"></label>
+    </div>
 </div>
-
-<div class="required field">
-    <label asp-for="Type">Type</label>
-    <select asp-for="Type" class="ui search dropdown" id="new_recipe_type" enables-conditional="true" required>
-        <option value="">Select Type</option>
-        <option value="Extract">Extract</option>
-        <option value="Partial Mash">Partial Mash</option>
-        <option value="All Grain">All Grain</option>
-    </select>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="BoilSize" class="validate" type="number" required>
+        <label asp-for="BoilSize"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="BoilTime" class="validate" type="text" required>
+        <label asp-for="BoilTime"></label>
+    </div>
+    <div class="range-field col m6 s12">
+        <label asp-for="Efficiency"></label>
+        <input asp-for="Efficiency" class="validate" type="range">
+    </div>
 </div>
-
-<div class="required field">
-    <label asp-for="Brewer">Brewer</label>
-    <input asp-for="Brewer" type="text" placeholder="Brewer" required>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea asp-for="Notes" class="materialize-textarea" length="120" type="text"></textarea>
+        <label asp-for="Notes">Notes</label>
+    </div>
 </div>
-
-<div class="field">
-    <label asp-for="AsstBrewer">Assistant Brewer</label>
-    <input asp-for="AsstBrewer" type="text" placeholder="Assistant Brewer">
+<div class="row">
+    <div class="input-field col s12">
+        <input asp-for="TasteNotes" class="validate" type="text">
+        <label asp-for="TasteNotes"></label>
+    </div>
 </div>
-
-<div class="required field">
-    <label asp-for="BatchSize">Batch Size</label>
-    <input asp-for="BatchSize" type="number" min="0.1" step="0.1" placeholder="Batch Size" required>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="TasteRating" class="validate" type="number" >
+        <label asp-for="TasteRating"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="OG" class="validate" type="number" >
+        <label asp-for="OG"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="FG" class="validate" type="number" >
+        <label asp-for="FG"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="FermentationStages" class="validate" type="number">
+        <label asp-for="FermentationStages"></label>
+    </div>
 </div>
-
-<div class="required field">
-    <label asp-for="BoilSize">Boil Size</label>
-    <input asp-for="BoilSize" type="number" min="0.1" step="0.1" placeholder="Boil Size" required>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="PrimaryAges" class="validate" type="number" >
+        <label asp-for="PrimaryAges"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="PrimaryTemp" class="validate" type="number" >
+        <label asp-for="PrimaryTemp"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="SecondaryAge" class="validate" type="number" >
+        <label asp-for="SecondaryAge"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="SecondaryTemp" class="validate" type="number">
+        <label asp-for="SecondaryTemp"></label>
+    </div>
 </div>
-
-<div class="required field">
-    <label asp-for="BoilTime">Boil Time</label>
-    <input asp-for="BoilTime" type="number" min="0" placeholder="Boil Time" required>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="TertiaryAge" class="validate" type="number" >
+        <label asp-for="TertiaryAge"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="TertiaryTemp" class="validate" type="number" >
+        <label asp-for="TertiaryTemp"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Age" class="validate" type="number" >
+        <label asp-for="Age"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="AgeTemp" class="validate" type="number">
+        <label asp-for="AgeTemp"></label>
+    </div>
 </div>
-
-<div class="required disabled field" depend-on="new_recipe_type" depend-type="blacklist" depend-val="Extract">
-    <label asp-for="Efficiency">Efficiency</label>
-    <input asp-for="Efficiency" type="number" min="0" step="0.1" placeholder="Efficiency" required>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="Date" class="validate" type="text" >
+        <label asp-for="Date"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Carbonation" class="validate" type="number" >
+        <label asp-for="Carbonation"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="ForcedCarbonation" class="validate filled-in" type="checkbox" >
+        <label asp-for="ForcedCarbonation"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="PrimingSugarName" class="validate" type="text">
+        <label asp-for="PrimingSugarName"></label>
+    </div>
 </div>
-
-<div class="field">
-    <label asp-for="Notes">Notes</label>
-    <textarea asp-for="Notes" rows="2" placeholder="Notes"></textarea>
-</div>
-
-<div class="field">
-    <label asp-for="TasteNotes">Taste Notes</label>
-    <textarea asp-for="TasteNotes" rows="2" placeholder="Taste Notes"></textarea>
-</div>
-
-<div class="field">
-    <label asp-for="TasteRating">Taste Rating</label>
-    <input asp-for="TasteRating" type="number" min="0" max="50" step="0.1" placeholder="Taste Rating">
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="CarbonationTemp" class="validate" type="number">
+        <label asp-for="CarbonationTemp"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="PrimingSugarEquiv" class="validate" type="number">
+        <label asp-for="PrimingSugarEquiv"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="KegPrimingFactor" class="validate" type="number">
+        <label asp-for="KegPrimingFactor"></label>
+    </div>
 </div>
