@@ -9,7 +9,7 @@ using BeerXML.Models;
 
 namespace BeerXML.Controllers
 {
-    public class AddRecipeController : Controller
+    public class NewItemController : Controller
     {
         private BeerXmlContext db = new BeerXmlContext();
 
@@ -56,6 +56,38 @@ namespace BeerXML.Controllers
             }
 
             return View();
+        }
+
+        public IActionResult Water()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Water(Water water)
+        {
+            if (db.Waters.Any(w => w.Name == water.Name))
+            {
+                ViewData["StatusVar"] = "Water with same name currently exist in database.";
+                ViewBag.DialogText = "Water with same name currently exist in database.";
+                ViewBag.DialogValue = "BAD";
+                return View();
+            }
+            else
+            {
+                try
+                {
+                    db.Waters.Add(water);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                ViewData["StatusVar"] = "Water successfully added.";
+                return View();
+            }
+            
         }
     }
 }

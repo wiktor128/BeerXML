@@ -1,26 +1,13 @@
 ﻿// Write your Javascript code.
 
 $(document).ready(function () {
-    $('.ui.sidebar')
-		.sidebar({
-		    //context: $('.bottom.segment')
-		    context: $('body')
-		})
-		.sidebar('attach events', '.menu .item')
-    ;
+    $('.button-collapse').sideNav();
+    $('.collapsible').collapsible();
 
-    $('.ui.accordion')
-		.accordion()
-    ;
-
-    $('select.dropdown')
-		.dropdown()
-    ;
-
-    $('input')
-	  .popup()
-    ;
-
+    //if (typeof DialogText !== 'undefined') {
+    //    Materialize.toast(DialogText, 14000);
+    //}
+    
 
     //=========== MY CODE ===========
 

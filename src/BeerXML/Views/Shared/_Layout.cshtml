@@ -6,62 +6,36 @@
     <title>@ViewData["Title"] - BeerXML</title>
 
     <environment names="Development">
-        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />*@
-        <link rel="stylesheet" href="~/lib/semantic-ui/dist/semantic.css" />
+        <link rel="stylesheet" href="~/lib/materialize/css/materialize.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment names="Staging,Production">
         @*<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />*@
-        <link rel="stylesheet" href="~/lib/semantic-ui/dist/semantic.css" />
+        <link rel="stylesheet" href="~/lib/materialize/css/materialize.min.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
-    <div class="ui top attached menu">
-        <a class="item">
-            <i class="sidebar icon"></i>
-            Menu
-        </a>
-    </div>
-    <div class="ui bottom attached segment pushable">
-        <div class="ui inverted labeled icon left vertical sidebar menu">
-            <a class="item" asp-controller="Home" asp-action="Index">
-                <i class="home icon"></i>
-                Home
-            </a>
-            <a class="item">
-                <i class="trophy icon"></i>
-                Ranking
-            </a>
-            <a class="item" asp-controller="AddRecipe" asp-action="Index">
-                <i class="plus icon"></i>
-                New Recipe
-            </a>
-            <a class="item">
-                <i class="search icon"></i>
-                Search
-            </a>
-            <a class="item">
-                <i class="heart icon"></i>
-                Favorites
-            </a>
+    <header>
+        @await Html.PartialAsync("_MenuPartial")
+    </header>
+    <main>
+        <div class="container">
+            @RenderBody()
         </div>
-        <div class="pusher">
-            <div class="ui basic segment">
+    </main>
+    <footer>
 
-                @RenderBody()
+    </footer>
 
-
-            </div>
-        </div>
-    </div>
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
-        @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
-        <script src="~/lib/semantic-ui/dist/semantic.js"></script>
+        <script src="~/lib/materialize/js/materialize.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
@@ -69,11 +43,7 @@
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery">
         </script>
-        @*<script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
-                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-            </script>*@
-        <script src="~/lib/semantic-ui/dist/semantic.js"></script>
+        <script src="~/lib/materialize/js/materialize.min.js"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 

@@ -1,0 +1,55 @@
+﻿@model BeerXML.Models.Water
+
+<div class="row">
+    <div class="input-field col m9 s12">
+        <input asp-for="Name" class="validate" type="text" required>
+        <label asp-for="Name">Name</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Version" class="validate" type="text" required>
+        <label asp-for="Version">Version</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="Amount" class="validate" type="text" required>
+        <label asp-for="Amount">Amount</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Calcium" class="validate" type="text" required>
+        <label asp-for="Calcium">Calcium</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Bicarbonate" class="validate" type="text" required>
+        <label asp-for="Bicarbonate">Bicarbonate</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Sulfate" class="validate" type="text" required>
+        <label asp-for="Sulfate">Sulfate</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="Chloride" class="validate" type="text" required>
+        <label asp-for="Chloride">Chloride</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Sodium" class="validate" type="text" required>
+        <label asp-for="Sodium">Sodium</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Magnesium" class="validate" type="text" required>
+        <label asp-for="Magnesium">Magnesium</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Ph" class="validate" type="text" >
+        <label asp-for="Ph">Ph</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea asp-for="Notes" class="materialize-textarea" length="120" type="text" ></textarea>
+        <label asp-for="Notes">Notes</label>
+    </div>
+</div>

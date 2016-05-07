@@ -1,0 +1,83 @@
+﻿@model BeerXML.Models.Hop
+
+<div class="row">
+    <div class="input-field col m9 s12">
+        <input asp-for="Name" class="validate" type="text" required>
+        <label asp-for="Name">Name</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Version" class="validate" type="number" required>
+        <label asp-for="Version">Version</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="Alpha" class="validate" type="number" required>
+        <label asp-for="Alpha">Alpha</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Amount" class="validate" type="number" required>
+        <label asp-for="Amount">Amount</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Use" class="validate" type="text" required>
+        <label asp-for="Use">Use</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Time" class="validate" type="text" required>
+        <label asp-for="Time">Time</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea asp-for="Notes" class="materialize-textarea" length="120" type="text"></textarea>
+        <label asp-for="Notes">Notes</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="Type" class="validate" type="text" required>
+        <label asp-for="Type">Type</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Form" class="validate" type="text" required>
+        <label asp-for="Form">Form</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Beta" class="validate" type="number" required>
+        <label asp-for="Beta">Beta</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="HSI" class="validate" type="number" >
+        <label asp-for="HSI">HSI</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="Origin" class="validate" type="text" required>
+        <label asp-for="Origin">Origin</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Substitutes" class="validate" type="text" required>
+        <label asp-for="Substitutes">Substitutes</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Humulene" class="validate" type="number" required>
+        <label asp-for="Humulene">Humulene</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Caryophyllene" class="validate" type="number">
+        <label asp-for="Caryophyllene">Caryophyllene</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m6 s12">
+        <input asp-for="Cohumulone" class="validate" type="number" required>
+        <label asp-for="Cohumulone">Cohumulone</label>
+    </div>
+    <div class="input-field col m6 s12">
+        <input asp-for="Myrcene" class="validate" type="number" required>
+        <label asp-for="Myrcene">Myrcene</label>
+    </div>
+</div>

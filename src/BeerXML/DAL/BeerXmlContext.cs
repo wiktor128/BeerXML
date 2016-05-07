@@ -32,6 +32,7 @@ namespace BeerXML.Models
         public DbSet<Equipment> Equipment { get; set; }
         public DbSet<EquipmentRecipe> EquipmentRecipe { get; set; }
 
+        public DbSet<Style> Style { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -116,13 +117,18 @@ namespace BeerXML.Models
 
             modelBuilder.Entity<EquipmentRecipe>()
                 .HasOne(er => er.Recipe)
-                .WithMany(e => e.EquipmentRecipe)
+                .WithMany(r => r.EquipmentRecipe)
                 .HasForeignKey(er => er.RecipeId);
 
             modelBuilder.Entity<EquipmentRecipe>()
                 .HasOne(er => er.Equipment)
                 .WithMany(e => e.EquipmentRecipe)
                 .HasForeignKey(er => er.EquipmentId);
+
+//---- Style -----
+            //modelBuilder.Entity<Style>()
+            //    .HasMany(s => s.Recipes)
+            //    .WithOne(r => r.Style);
 
 
         }// still not sure how it works xD

@@ -14,5 +14,6 @@ namespace BeerXML.Models
         public Yeast Yeast { get; set; }
         public Misc Misc { get; set; }
         public Equipment Equipment { get; set; }
+        public Style Style { get; set; }
     }
 }

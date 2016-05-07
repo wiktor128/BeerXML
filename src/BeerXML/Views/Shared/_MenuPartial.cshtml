@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<nav class="top-nav">
+    <div class="nav-wrapper container">
+        <a href="#" class="brand-logo left ">Logo</a>
+        <ul id="nav-mobile" class="right">
+            <li><a class="hide-on-med-and-down" href="#">Sass</a></li>
+            <li><a class="hide-on-med-and-down" href="#">Components</a></li>
+            <li><a class="button-collapse show-on-large" data-activates="slide-out" href="#"><i class="material-icons">menu</i></a></li>
+        </ul>
+    </div>
+</nav>
+<ul id="slide-out" class="side-nav">
+    <li class="bold"><a class="waves-effect waves-teal" href="#!">Home</a></li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li class="">
+                <a class="waves-effect waves-teal bold collapsible-header">Add New<i class="mdi-navigation-arrow-drop-down"></i></a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a asp-controller="NewItem" asp-action="Index" class="" >Recipe</a></li>
+                        <li><a asp-controller="NewItem" asp-action="Water" class="" >Water</a></li>
+                        <li><a class="" href="#!">Third</a></li>
+                        <li><a class="" href="#!">Fourth</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ul>

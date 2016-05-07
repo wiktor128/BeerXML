@@ -24,6 +24,7 @@ namespace BeerXML.Models
         [Required]
         public string Type { get; set; } // todo validation by list
 
+        //[Required]
         //public Style Style { get; set; }
 
         [Required]

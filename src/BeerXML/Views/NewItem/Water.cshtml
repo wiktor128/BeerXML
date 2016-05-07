@@ -1,0 +1,28 @@
+﻿@model BeerXML.Models.Water
+
+@{
+    ViewData["Title"] = "Add Water Item";
+}
+
+<form class="" method="post" asp-action="Water" asp-controller="NewItem">
+    @Html.EditorFor(m => m)
+
+    <div class="row right-align">
+        <button class="waves-effect waves-light btn" type="submit">
+            <i class="material-icons left">send</i>
+            Submit
+        </button>
+    </div>
+</form>
+<script>
+    //var DialogText = "x";
+    @*@if (ViewData["DialogText"] != null)
+    {
+        var DialogText = @ViewData["DialogText"];
+        @Html.Raw("var DialogValue =") @ViewData["DialogValue"];
+    }*@
+
+    //$(document).ready(function () {
+    //    Materialize.toast('I am a toast!', 14000);
+    //});
+</script>
