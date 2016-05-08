@@ -37,6 +37,9 @@ namespace BeerXML.Models
 
         public DbSet<Style> Style { get; set; }
 
+        public DbSet<Mash> Mash { get; set; }
+        public DbSet<MashStep> MashStep { get; set; }
+        public DbSet<MashStepMash> MashStepMash { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -128,7 +131,35 @@ namespace BeerXML.Models
                 .WithMany(e => e.EquipmentRecipe)
                 .HasForeignKey(er => er.EquipmentId);
 
-//---- Style -----
+//---- MashStepMash ----
+            modelBuilder.Entity<MashStepMash>()
+                .HasKey(msm => new { msm.MashId, msm.MashStepId });
+
+            modelBuilder.Entity<MashStepMash>()
+                .HasOne(msm => msm.Mash)
+                .WithMany(m => m.MashStepMash)
+                .HasForeignKey(msm => msm.MashId);
+
+            modelBuilder.Entity<MashStepMash>()
+                .HasOne(msm => msm.MashStep)
+                .WithMany(ms => ms.MashStepMash)
+                .HasForeignKey(msm => msm.MashStepId);
+
+//---- MashRecipe ----
+            modelBuilder.Entity<MashRecipe>()
+                .HasKey(mr => new { mr.RecipeId, mr.MashId });
+
+            modelBuilder.Entity<MashRecipe>()
+                .HasOne(mr => mr.Recipe)
+                .WithMany(r => r.MashRecipe)
+                .HasForeignKey(mr => mr.RecipeId);
+
+            modelBuilder.Entity<MashRecipe>()
+                .HasOne(mr => mr.Mash)
+                .WithMany(e => e.MashRecipe)
+                .HasForeignKey(mr => mr.MashId);
+
+            //---- Style -----
             //modelBuilder.Entity<Style>()
             //    .HasMany(s => s.Recipes)
             //    .WithOne(r => r.Style);

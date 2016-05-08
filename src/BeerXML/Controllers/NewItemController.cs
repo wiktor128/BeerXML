@@ -62,7 +62,6 @@ namespace BeerXML.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public IActionResult Water(Water water)
         {
@@ -115,6 +114,7 @@ namespace BeerXML.Controllers
                 return View();
             }
         }
+
         public IActionResult Misc()
         {
             return View();
@@ -166,11 +166,11 @@ namespace BeerXML.Controllers
                 return View();
             }
         }
+
         public IActionResult Yeast()
         {
             return View();
         }
-
         [HttpPost]
         public IActionResult Yeast(Yeast yeast)
         {
@@ -249,7 +249,6 @@ namespace BeerXML.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public IActionResult Recipe(RecipeViewModel recipeViewModel)
         {

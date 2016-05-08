@@ -65,7 +65,8 @@ namespace BeerXML.Models
         [Required]
         public virtual List<WaterRecipe> WaterRecipe { get; set; }
 
-        //public int Mash Mash { get; set; }
+        [Required]
+        public virtual List<MashRecipe> MashRecipe { get; set; }
 
         public string Notes { get; set; }
 
