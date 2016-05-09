@@ -1,0 +1,51 @@
+﻿@model BeerXML.Models.Mash
+
+<div class="row">
+    <div class="input-field col m9 s12">
+        <input asp-for="Name" class="validate" type="text" required>
+        <label asp-for="Name">Name</label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Version" class="validate" type="text" required>
+        <label asp-for="Version">Version</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="GrainTemp" class="validate" type="number" required>
+        <label asp-for="GrainTemp"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="TunTemp" class="validate" type="number" >
+        <label asp-for="TunTemp"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="SpargeTemp" class="validate" type="number" >
+        <label asp-for="SpargeTemp"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="Ph" class="validate" type="number" >
+        <label asp-for="Ph"></label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col m3 s12">
+        <input asp-for="TunWeight" class="validate" type="number" >
+        <label asp-for="TunWeight"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="TunspecificHeat" class="validate" type="number" >
+        <label asp-for="TunspecificHeat"></label>
+    </div>
+    <div class="input-field col m3 s12">
+        <input asp-for="EquipAdjust" class="validate filled-in" type="checkbox" >
+        <label asp-for="EquipAdjust"></label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea asp-for="Notes" class="materialize-textarea" length="120" type="text" ></textarea>
+        <label asp-for="Notes">Notes</label>
+    </div>
+</div>

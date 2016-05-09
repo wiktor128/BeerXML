@@ -245,6 +245,32 @@ namespace BeerXML.Controllers
             }
         }
 
+        public IActionResult Mash()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Mash(Mash mash)
+        {
+            if (db.Yeast.Any(w => w.Name == mash.Name))
+            {
+                return View();
+            }
+            else
+            {
+                try
+                {
+                    db.Mash.Add(mash);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                return View();
+            }
+        }
+
         public IActionResult Recipe()
         {
             return View();
