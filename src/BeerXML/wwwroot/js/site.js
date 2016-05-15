@@ -1,19 +1,17 @@
-﻿// Write your Javascript code.
+﻿$(document).ready(function () {
 
-$(document).ready(function () {
+    //=========== MATERIALIZE INITIALIZATIONS ===========
+
     //slide-out menu service
     $('.button-collapse').sideNav();
     $('.collapsible').collapsible();
 
+    $(document).ready(function () {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal-trigger').leanModal();
+    });
 
-    //$(document).ready(function () {
-    //    $('ul.tabs').tabs();
-    //});
 
-    //if (typeof DialogText !== 'undefined') {
-    //    Materialize.toast(DialogText, 14000);
-    //}
-    
 
     //=========== MY CODE ===========
 
@@ -53,5 +51,25 @@ $(document).ready(function () {
         //$('ul.tabs').tabs('select_tab', 'tab2');
     })
     
+
+
+    var nextNumber = 0;
+    $('#btn_ajax').click(function () {
+        $.ajax({
+            url: '/NewItem/MashStepTemplate',//'@Url.Action("MashStepTemplate", "NewItem")',
+            contentType: 'application/html; charset=utf-8',
+            data: { nameAttributeId: nextNumber++ },
+            type: 'GET',
+            dataType: 'html'
+
+        })
+        .success(function (result) {
+            $('#ajax_response_container').html(result);
+        })
+        .error(function (xhr, status) {
+            alert(status);//watch this
+        })
+    });
+
 
 });

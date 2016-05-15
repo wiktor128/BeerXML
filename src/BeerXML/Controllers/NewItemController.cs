@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using BeerXML.Models;
+using BeerXML.CustomValidation;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -252,7 +253,7 @@ namespace BeerXML.Controllers
         [HttpPost]
         public IActionResult Mash(Mash mash)
         {
-            if (db.Yeast.Any(w => w.Name == mash.Name))
+            if (db.Mash.Any(w => w.Name == mash.Name))
             {
                 return View();
             }
@@ -270,6 +271,46 @@ namespace BeerXML.Controllers
                 return View();
             }
         }
+
+
+        public IActionResult MashTest()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult MashTest(MashMashStepViewModel mash)
+        {
+            //if (db.Yeast.Any(w => w.Name == mash.Name))
+            //{
+            //    return View();
+            //}
+            //else
+            //{
+            //    try
+            //    {
+            //        db.Mash.Add(mash);
+            //        db.SaveChanges();
+            //    }
+            //    catch (Exception)
+            //    {
+            //        throw;
+            //    }
+            //    return View();
+            //}
+            return View();
+        }
+
+        
+        [AjaxOnly]
+        public IActionResult MashStepTemplate(int nameAttributeId)
+        {
+            ViewBag.Id = nameAttributeId;
+            var x = View();
+            
+            return View();
+        }
+
+
 
         public IActionResult Recipe()
         {

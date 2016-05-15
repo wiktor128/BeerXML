@@ -1,0 +1,9 @@
+﻿@model BeerXML.Models.MashMashStepViewModel
+
+@{
+    int Id = ViewBag.Id;
+    Layout = "";
+}
+
+@Html.EditorFor(m => m.MashSteps[Id])
+
