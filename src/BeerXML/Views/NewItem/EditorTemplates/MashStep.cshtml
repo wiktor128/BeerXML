@@ -2,17 +2,17 @@
 
 <div class="row">
     <div class="input-field col m9 s12">
-        <input asp-for="Name" class="validate" type="text" required>
+        <input asp-for="Name" class="validate" type="text" required="required">
         <label asp-for="Name">Name</label>
     </div>
     <div class="input-field col m3 s12">
-        <input asp-for="Version" class="validate" type="text" required>
+        <input asp-for="Version" class="validate" type="text" required="required">
         <label asp-for="Version">Version</label>
     </div>
 </div>
 <div class="row">
     <div class="input-field col m3 s12">
-        <input asp-for="Type" class="validate" type="text" required>
+        <input asp-for="Type" class="validate" type="text" required="required">
         <label asp-for="Type"></label>
     </div>
     <div class="input-field col m3 s12">
@@ -20,21 +20,21 @@
         <label asp-for="InfuseAmount"></label>
     </div>
     <div class="input-field col m3 s12">
-        <input asp-for="StepTemp" class="validate" type="number">
+        <input asp-for="StepTemp" class="validate" type="number" required="required">
         <label asp-for="StepTemp"></label>
     </div>
     <div class="input-field col m3 s12">
-        <input asp-for="StepTime" class="validate" type="number">
+        <input asp-for="StepTime" class="validate" type="number" required="required">
         <label asp-for="StepTime"></label>
     </div>
 </div>
 <div class="row">
     <div class="input-field col m3 s12">
-        <input asp-for="RampTime" class="validate" type="number" required>
+        <input asp-for="RampTime" class="validate" type="number" >
         <label asp-for="RampTime"></label>
     </div>
     <div class="input-field col m3 s12">
-        <input asp-for="EndTemp" class="validate" type="number" required>
+        <input asp-for="EndTemp" class="validate" type="number" >
         <label asp-for="EndTemp"></label>
     </div>
 </div>

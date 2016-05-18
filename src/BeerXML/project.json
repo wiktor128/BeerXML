@@ -51,6 +51,6 @@
   },
 
   "data": {
-    "connectionString": "Server=(localdb)\\MSSQLLocalDB;Database=BeerXML;Trusted_Connection=True;MultipleActiveResultSets=true"
+    "connectionString": "Server=(LocalDB)\\MSSQLLocalDB;Database=BeerXML;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
 }

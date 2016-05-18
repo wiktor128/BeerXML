@@ -5,3 +5,31 @@
 .no-padding {
     padding: 0;
 }
+
+.view-card table th,
+.view-card table td {
+    padding: 0;
+}
+
+.view-card table td:nth-last-child(1) {
+    word-break: break-all;
+    padding-left: 10px;
+}
+
+.view-card .card-action {
+    padding: 5px;
+}
+
+
+.view-card .card-action a:nth-child(2) {
+    float: right;
+}
+.view-card .card-action a:nth-last-child(1) {
+   
+    margin-right: 0px !important;
+}
+#mash_step_add_new_btn {
+    padding: 0px;
+    width: 100%;
+}
+
