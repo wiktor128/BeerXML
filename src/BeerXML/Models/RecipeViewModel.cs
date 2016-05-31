@@ -15,5 +15,7 @@ namespace BeerXML.Models
         public Misc Misc { get; set; }
         public Equipment Equipment { get; set; }
         public Style Style { get; set; }
+        public Mash Mash { get; set; }
+        public List<MashStep> MashSteps { get; set; }
     }
 }

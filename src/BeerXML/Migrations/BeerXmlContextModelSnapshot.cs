@@ -172,6 +172,79 @@ namespace BeerXML.Migrations
                     b.HasKey("RecipeId", "HopId");
                 });
 
+            modelBuilder.Entity("BeerXML.Models.Mash", b =>
+                {
+                    b.Property<int>("MashId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("EquipAdjust");
+
+                    b.Property<float>("GrainTemp");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<string>("Notes");
+
+                    b.Property<float>("Ph");
+
+                    b.Property<float>("SpargeTemp");
+
+                    b.Property<float>("TunTemp");
+
+                    b.Property<float>("TunWeight");
+
+                    b.Property<float>("TunspecificHeat");
+
+                    b.Property<int>("Version");
+
+                    b.HasKey("MashId");
+                });
+
+            modelBuilder.Entity("BeerXML.Models.MashRecipe", b =>
+                {
+                    b.Property<int>("RecipeId");
+
+                    b.Property<int>("MashId");
+
+                    b.HasKey("RecipeId", "MashId");
+                });
+
+            modelBuilder.Entity("BeerXML.Models.MashStep", b =>
+                {
+                    b.Property<int>("MashStepId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<float>("EndTemp");
+
+                    b.Property<float>("InfuseAmount");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<float>("RampTime");
+
+                    b.Property<float>("StepTemp");
+
+                    b.Property<float>("StepTime");
+
+                    b.Property<string>("Type")
+                        .IsRequired();
+
+                    b.Property<int>("Version");
+
+                    b.HasKey("MashStepId");
+                });
+
+            modelBuilder.Entity("BeerXML.Models.MashStepMash", b =>
+                {
+                    b.Property<int>("MashId");
+
+                    b.Property<int>("MashStepId");
+
+                    b.HasKey("MashId", "MashStepId");
+                });
+
             modelBuilder.Entity("BeerXML.Models.Misc", b =>
                 {
                     b.Property<int>("MiscId")
@@ -468,6 +541,28 @@ namespace BeerXML.Migrations
                     b.HasOne("BeerXML.Models.Recipe")
                         .WithMany()
                         .HasForeignKey("RecipeId");
+                });
+
+            modelBuilder.Entity("BeerXML.Models.MashRecipe", b =>
+                {
+                    b.HasOne("BeerXML.Models.Mash")
+                        .WithMany()
+                        .HasForeignKey("MashId");
+
+                    b.HasOne("BeerXML.Models.Recipe")
+                        .WithMany()
+                        .HasForeignKey("RecipeId");
+                });
+
+            modelBuilder.Entity("BeerXML.Models.MashStepMash", b =>
+                {
+                    b.HasOne("BeerXML.Models.Mash")
+                        .WithMany()
+                        .HasForeignKey("MashId");
+
+                    b.HasOne("BeerXML.Models.MashStep")
+                        .WithMany()
+                        .HasForeignKey("MashStepId");
                 });
 
             modelBuilder.Entity("BeerXML.Models.MiscRecipe", b =>

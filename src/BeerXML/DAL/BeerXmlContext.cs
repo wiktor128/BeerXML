@@ -38,6 +38,7 @@ namespace BeerXML.Models
         public DbSet<Style> Style { get; set; }
 
         public DbSet<Mash> Mash { get; set; }
+        public DbSet<MashRecipe> MashRecipe { get; set; }
         public DbSet<MashStep> MashStep { get; set; }
         public DbSet<MashStepMash> MashStepMash { get; set; }
 
@@ -159,10 +160,17 @@ namespace BeerXML.Models
                 .WithMany(e => e.MashRecipe)
                 .HasForeignKey(mr => mr.MashId);
 
+
             //---- Style -----
+            //modelBuilder.Entity<Recipe>()
+            //    .HasOne(r => r.Style)
+            //    .WithMany(s => s.Recipes)
+            //    .HasForeignKey(r => r.StyleId);
+
             //modelBuilder.Entity<Style>()
             //    .HasMany(s => s.Recipes)
-            //    .WithOne(r => r.Style);
+            //    .WithOne(r => r.Style)
+            //    .HasForeignKey(s => s.RecipeId);
 
 
         }// still not sure how it works xD

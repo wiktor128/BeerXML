@@ -1,28 +1,32 @@
-﻿@model BeerXML.Models.Mash
+﻿@model BeerXML.Models.MashMashStepViewModel
 
 @{
     ViewData["Title"] = "Add Water Item";
 }
 
-<form class="" method="post" asp-action="Mash" asp-controller="NewItem">
-    @Html.EditorFor(m => m)
+<form class="" id="mash_form" method="post" asp-action="Mash" asp-controller="NewItem">
+    @Html.EditorFor(m => m.Mash)
 
+    @Html.Partial("~/Views/NewItem/Partial/_MashStepService.cshtml",Model)
+
+    @*<div class="row right-align">
+        <a id="btn_ajax" class="waves-effect waves-light btn modal-trigger" href="#mash_step_modal_0">
+            New Mash Step
+        </a>
+    </div>*@
     <div class="row right-align">
         <button class="waves-effect waves-light btn" type="submit">
             <i class="material-icons left">send</i>
             Submit
         </button>
     </div>
+    @*<div id="mash_step_modal_0" class="modal modal-fixed-footer">
+        <div id="ajax_response_container" class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a id="mash_step_modal_add_button" order-number="0" href="#!" class=" waves-effect waves-green btn-flat mash-step-modal-btn-add">Add</a>
+        </div>
+    </div>*@
 </form>
-<script>
-    //var DialogText = "x";
-    @*@if (ViewData["DialogText"] != null)
-    {
-        var DialogText = @ViewData["DialogText"];
-        @Html.Raw("var DialogValue =") @ViewData["DialogValue"];
-    }*@
-
-    //$(document).ready(function () {
-    //    Materialize.toast('I am a toast!', 14000);
-    //});
-</script>

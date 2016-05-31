@@ -13,16 +13,16 @@ namespace BeerXML.Controllers
 
         public IActionResult Index()
         {
-            List<Water> waters = db.Waters.ToList();
-            try
-            {
-                List<Recipe> recipes = db.Recipes.ToList();
-            }
-            catch (Exception e)
-            {
+            //List<Water> waters = db.Waters.ToList();
+            //try
+            //{
+            //    List<Recipe> recipes = db.Recipes.ToList();
+            //}
+            //catch (Exception e)
+            //{
 
-                throw;
-            }
+            //    throw;
+            //}
             
             return View();
         }

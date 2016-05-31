@@ -24,8 +24,9 @@ namespace BeerXML.Models
         [Required]
         public string Type { get; set; } // todo validation by list
 
-        //[Required]
-        //public Style Style { get; set; }
+        [Required]
+        //public int StyleId { get; set; }
+        public Style Style { get; set; }
 
         [Required]
         public virtual List<EquipmentRecipe> EquipmentRecipe { get; set; }

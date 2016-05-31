@@ -55,30 +55,26 @@
     var counterNumber = 0;
     var viewCounterNumber = 0;
     $('#mash_step_add_new_btn').click(function () {
-        if (counterNumber == viewCounterNumber) {
-            $.ajax({
-                url: '/NewItem/MashStepTemplate',//'@Url.Action("MashStepTemplate", "NewItem")',
-                contentType: 'application/html; charset=utf-8',
-                data: { nameAttributeId: counterNumber },
-                type: 'GET',
-                dataType: 'html'
-            })
-            .success(function (result) {
-                addMashStepModal(counterNumber);
-                $('#mash_step_modal_' + counterNumber + ' .modal-content').html(result);
-                $('#mash_step_modal_' + counterNumber).openModal();
-                ++counterNumber;
+        $.ajax({
+            url: '/NewItem/MashStepTemplate',//'@Url.Action("MashStepTemplate", "NewItem")',
+            contentType: 'application/html; charset=utf-8',
+            data: { nameAttributeId: counterNumber },
+            type: 'GET',
+            dataType: 'html'
+        })
+        .success(function (result) {
+            addMashStepModal(counterNumber);
+            $('#mash_step_modal_' + counterNumber + ' .modal-content').html(result);
+            $('#mash_step_modal_' + counterNumber).openModal();
+            ++counterNumber;
 
-                //$('.modal-trigger').leanmodal({
-                //    dismissible: false
-                //});
-            })
-            .error(function (xhr, status) {
-                alert(status);//watch this
-            })
-        } else {
-            $('#mash_step_modal_' + (counterNumber - 1)).openModal();
-        }
+            //$('.modal-trigger').leanModal({
+            //    dismissible: false
+            //});
+        })
+        .error(function (xhr, status) {
+            alert(status);//watch this
+        })
     });
 
 
@@ -89,7 +85,6 @@
         var rendered = Mustache.render(template, params);
         //$('#mash_step_container').append(rendered); 
         $(rendered).insertBefore('#mash_step_add_new');
-        ++viewCounterNumber;
     };
     function addMashStepModal(orderNumber) {
         var template = $('#mash_step_modal_template').html();
@@ -97,10 +92,6 @@
         var rendered = Mustache.render(template, {orderNumber: orderNumber});
         //$('#mash_step_container').append(rendered); 
         $('#mash_step_container').append(rendered);
-
-        $('.modal-trigger').leanModal({
-            dismissible: false
-        });
     };
 
     function alterMashStepView(target, params) {
@@ -114,7 +105,7 @@
 
     function validateMashStepModal(modalOrderNum) {
         var flag = true;
-        var validator = $('form').validate();
+        var validator = $('#mash_form').validate();
 
         flag = (validator.check($('#MashSteps_' + modalOrderNum + '__Name')) != false
                     ?  true : ($('#MashSteps_' + modalOrderNum + '__Name').addClass('invalid'), false)

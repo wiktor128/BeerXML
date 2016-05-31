@@ -251,52 +251,34 @@ namespace BeerXML.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Mash(Mash mash)
+        public IActionResult Mash(MashMashStepViewModel mashMashStepViewModel)
         {
-            if (db.Mash.Any(w => w.Name == mash.Name))
+            var mashEnt = db.Mash.Add(mashMashStepViewModel.Mash).Entity;
+            foreach (var item in mashMashStepViewModel.MashSteps)
             {
-                return View();
+                if (item.Name != null) //  zabezpieczenie z powodu luki w oknie modal js
+                {
+                    var mashStepEnt = db.MashStep.Add(item).Entity;
+
+                    var mashStepMash = db.MashStepMash.Add(new MashStepMash()
+                    {
+                        Mash = mashEnt,
+                        MashId = mashEnt.MashId,
+                        MashStep = mashStepEnt,
+                        MashStepId = mashStepEnt.MashStepId
+                    }).Entity;
+                }
             }
-            else
+
+            try
             {
-                try
-                {
-                    db.Mash.Add(mash);
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                return View();
+                db.SaveChanges();
             }
-        }
+            catch (Exception e)
+            {
+                throw e;
+            }
 
-
-        public IActionResult MashTest()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult MashTest(MashMashStepViewModel mash)
-        {
-            //if (db.Yeast.Any(w => w.Name == mash.Name))
-            //{
-            //    return View();
-            //}
-            //else
-            //{
-            //    try
-            //    {
-            //        db.Mash.Add(mash);
-            //        db.SaveChanges();
-            //    }
-            //    catch (Exception)
-            //    {
-            //        throw;
-            //    }
-            //    return View();
-            //}
             return View();
         }
 
@@ -319,8 +301,34 @@ namespace BeerXML.Controllers
         [HttpPost]
         public IActionResult Recipe(RecipeViewModel recipeViewModel)
         {
-            var recipeEnt = db.Recipes.Add(recipeViewModel.Recipe).Entity;
+            var styleEnt = db.Style.Add(recipeViewModel.Style).Entity;
+            //recipeViewModel.Recipe.Style = styleEnt;
+            //recipeViewModel.Recipe.StyleId = styleEnt.StyleId;
+
             var waterEnt = db.Waters.Add(recipeViewModel.Water).Entity;
+            var hopEnt = db.Hops.Add(recipeViewModel.Hop).Entity;
+            var fermentableEnt = db.Fermentable.Add(recipeViewModel.Fermentable).Entity;
+            var yeastEnt = db.Yeast.Add(recipeViewModel.Yeast).Entity;
+            var miscEnt = db.Misc.Add(recipeViewModel.Misc).Entity;
+            var equipmentEnt = db.Equipment.Add(recipeViewModel.Equipment).Entity;
+            var mashEnt = db.Mash.Add(recipeViewModel.Mash).Entity;
+            var recipeEnt = db.Recipes.Add(recipeViewModel.Recipe).Entity;
+
+            foreach (var item in recipeViewModel.MashSteps)
+            {
+                if (item.Name != null) //  zabezpieczenie z powodu luki w oknie modal js
+                {
+                    var mashStepEnt = db.MashStep.Add(item).Entity;
+
+                    var mashStepMash = db.MashStepMash.Add(new MashStepMash()
+                    {
+                        Mash = mashEnt,
+                        MashId = mashEnt.MashId,
+                        MashStep = mashStepEnt,
+                        MashStepId = mashStepEnt.MashStepId
+                    }).Entity;
+                }
+            }
 
             db.WatersRecipes.Add(new WaterRecipe()
             {
@@ -328,6 +336,63 @@ namespace BeerXML.Controllers
                 RecipeId = recipeEnt.RecipeId,
                 Water = waterEnt,
                 WaterId = waterEnt.WaterId
+            });
+
+            db.HopRecipes.Add(new HopRecipe()
+            {
+                Recipe = recipeEnt,
+                RecipeId = recipeEnt.RecipeId,
+                Hop = hopEnt,
+                HopId = hopEnt.HopId
+            });
+
+            db.FermentableRecipes.Add(new FermentableRecipe()
+            {
+                Recipe = recipeEnt,
+                RecipeId = recipeEnt.RecipeId,
+                Fermentable = fermentableEnt,
+                FermentableId = fermentableEnt.FermentableId
+            });
+
+            db.YeastRecipe.Add(new YeastRecipe()
+            {
+                Recipe = recipeEnt,
+                RecipeId = recipeEnt.RecipeId,
+                Yeast = yeastEnt,
+                YeastId = yeastEnt.YeastId
+            });
+
+            db.MiscRecipe.Add(new MiscRecipe()
+            {
+                Recipe = recipeEnt,
+                RecipeId = recipeEnt.RecipeId,
+                Misc = miscEnt,
+                MiscId = miscEnt.MiscId
+            });
+
+            db.EquipmentRecipe.Add(new EquipmentRecipe()
+            {
+                Recipe = recipeEnt,
+                RecipeId = recipeEnt.RecipeId,
+                Equipment = equipmentEnt,
+                EquipmentId = equipmentEnt.EquipmentId
+            });
+            
+            // STYLE PROBLEM STYLE PROBLEM
+            //db.styl.Add(new StyleRecipe()
+            //{
+            //    Recipe = recipeEnt,
+            //    RecipeId = recipeEnt.RecipeId,
+            //    Water = waterEnt,
+            //    WaterId = waterEnt.WaterId
+            //});
+
+            db.MashRecipe.Add(new MashRecipe()
+            {
+                Recipe = recipeEnt,
+                RecipeId = recipeEnt.RecipeId,
+                Mash = mashEnt,
+                MashId = mashEnt.MashId
             });
 
             try
