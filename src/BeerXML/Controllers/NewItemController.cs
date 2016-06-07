@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using BeerXML.Models;
 using BeerXML.CustomValidation;
+using Microsoft.AspNet.Http;
+using System.IO;
+using System.Xml.Serialization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -292,8 +295,6 @@ namespace BeerXML.Controllers
             return View();
         }
 
-
-
         public IActionResult Recipe()
         {
             return View();
@@ -301,10 +302,6 @@ namespace BeerXML.Controllers
         [HttpPost]
         public IActionResult Recipe(RecipeViewModel recipeViewModel)
         {
-            var styleEnt = db.Style.Add(recipeViewModel.Style).Entity;
-            //recipeViewModel.Recipe.Style = styleEnt;
-            //recipeViewModel.Recipe.StyleId = styleEnt.StyleId;
-
             var waterEnt = db.Waters.Add(recipeViewModel.Water).Entity;
             var hopEnt = db.Hops.Add(recipeViewModel.Hop).Entity;
             var fermentableEnt = db.Fermentable.Add(recipeViewModel.Fermentable).Entity;
@@ -312,6 +309,9 @@ namespace BeerXML.Controllers
             var miscEnt = db.Misc.Add(recipeViewModel.Misc).Entity;
             var equipmentEnt = db.Equipment.Add(recipeViewModel.Equipment).Entity;
             var mashEnt = db.Mash.Add(recipeViewModel.Mash).Entity;
+            var styleEnt = db.Style.Add(recipeViewModel.Style).Entity;
+
+            recipeViewModel.Recipe.StyleId = styleEnt.StyleId;
             var recipeEnt = db.Recipes.Add(recipeViewModel.Recipe).Entity;
 
             foreach (var item in recipeViewModel.MashSteps)
@@ -377,15 +377,6 @@ namespace BeerXML.Controllers
                 Equipment = equipmentEnt,
                 EquipmentId = equipmentEnt.EquipmentId
             });
-            
-            // STYLE PROBLEM STYLE PROBLEM
-            //db.styl.Add(new StyleRecipe()
-            //{
-            //    Recipe = recipeEnt,
-            //    RecipeId = recipeEnt.RecipeId,
-            //    Water = waterEnt,
-            //    WaterId = waterEnt.WaterId
-            //});
 
             db.MashRecipe.Add(new MashRecipe()
             {
@@ -404,7 +395,32 @@ namespace BeerXML.Controllers
                 throw;
             }
 
+            return RedirectToAction("Index", "Display");
+        }
+
+        public IActionResult RecipeFromFile()
+        {
             return View();
+        }
+        [HttpPost]
+        public IActionResult RecipeFromFile(IFormFile file)
+        {
+
+            // file to string
+            Stream stream = file.OpenReadStream();
+            TextReader streamReader = new StreamReader(stream);
+            string text = streamReader.ReadToEnd();
+            streamReader.Close();
+
+            // deserialization
+            XmlSerializer deserializer = new XmlSerializer(typeof(Recipe));
+            StringReader reader = new StringReader(text);
+            Recipe recipe = (Recipe)deserializer.Deserialize(reader);
+            reader.Close();
+
+            // todo save deserialized object
+
+            return RedirectToAction("Index", "Display");
         }
     }
 }

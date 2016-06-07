@@ -24,7 +24,7 @@ namespace BeerXML.Controllers
             //    throw;
             //}
             
-            return View();
+            return RedirectToAction("Index", "Display");
         }
 
         public IActionResult About()

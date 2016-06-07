@@ -4,64 +4,84 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Serialization;
 
 
 namespace BeerXML.Models
 {
     public class Hop
     {
+        [XmlIgnore]
         [ScaffoldColumn(false)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int HopId { get; set; }
 
+        [XmlElement("NAME")]
         [Required]
         public string Name { get; set; }
 
+        [XmlElement("VERSION")]
         [Required]
-        public int Version { get; set; }
+        public double Version { get; set; }
 
+        [XmlElement("ALPHA")]
         [Required]
         [Range(0, 100)]
-        public float Alpha { get; set; }
+        public double Alpha { get; set; }
 
+        [XmlElement("AMOUNT")]
         [Required]
-        [Range(0, int.MaxValue, ErrorMessage = "The value must be greater than 0")]
-        public float Amount { get; set; }
+        [Range(0, double.MaxValue, ErrorMessage = "The value must be greater than 0")]
+        public double Amount { get; set; }
 
+        [XmlElement("USE")]
         [Required]
         public string Use { get; set; }
 
+        [XmlElement("TIME")]
         [Required]
-        public int Time { get; set; }
+        public double Time { get; set; }
 
+        [XmlElement("NOTES")]
         public string Notes { get; set; }
 
+        [XmlElement("TYPE")]
         public string Type { get; set; }
 
+        [XmlElement("FORM")]
         public string Form { get; set; }
 
+        [XmlElement("BETA")]
         [Range(0, 100)]
-        public float Beta { get; set; }
+        public double Beta { get; set; }
 
+        [XmlElement("HSI")]
         [Range(0, 100)]
-        public float HSI { get; set; } 
+        public double HSI { get; set; }
 
+        [XmlElement("ORIGIN")]
         public string Origin { get; set; }
 
+        [XmlElement("SUBSTITUTES")]
         public string Substitutes { get; set; }
 
+        [XmlElement("HUMULENE")]
         [Range(0, 100)]
-        public float Humulene { get; set; }
+        public double Humulene { get; set; }
 
+        [XmlElement("CARYOPHYLLENE")]
         [Range(0, 100)]
-        public float Caryophyllene { get; set; }
+        public double Caryophyllene { get; set; }
 
+        [XmlElement("COHUMULONE")]
         [Range(0, 100)]
-        public float Cohumulone { get; set; }
+        public double Cohumulone { get; set; }
 
+        [XmlElement("MYRCENE")]
         [Range(0, 100)]
-        public float Myrcene { get; set; }
+        public double Myrcene { get; set; }
 
+        [XmlIgnore]
         public List<HopRecipe> HopRecipe { get; set; }
 
     }

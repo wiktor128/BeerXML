@@ -8,7 +8,7 @@ using BeerXML.Models;
 namespace BeerXML.Migrations
 {
     [DbContext(typeof(BeerXmlContext))]
-    [Migration("20160530195759_Initial")]
+    [Migration("20160606235052_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,38 +22,38 @@ namespace BeerXML.Migrations
                     b.Property<int>("EquipmentId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<float>("BatchSize");
+                    b.Property<double>("BatchSize");
 
-                    b.Property<float>("BoilSize");
+                    b.Property<double>("BoilSize");
 
-                    b.Property<float>("BoilTime");
+                    b.Property<double>("BoilTime");
 
                     b.Property<bool>("CalcBoilVolume");
 
-                    b.Property<float>("EvapRate");
+                    b.Property<double>("EvapRate");
 
-                    b.Property<float>("HopUtilization");
+                    b.Property<double>("HopUtilization");
 
-                    b.Property<float>("LauterDeadspace");
+                    b.Property<double>("LauterDeadspace");
 
                     b.Property<string>("Name")
                         .IsRequired();
 
                     b.Property<string>("Notes");
 
-                    b.Property<float>("TopUpKettle");
+                    b.Property<double>("TopUpKettle");
 
-                    b.Property<float>("TopUpWater");
+                    b.Property<double>("TopUpWater");
 
-                    b.Property<float>("TrubChillerLoss");
+                    b.Property<double>("TrubChillerLoss");
 
-                    b.Property<float>("TunSpecificHeat");
+                    b.Property<double>("TunSpecificHeat");
 
-                    b.Property<float>("TunVolume");
+                    b.Property<double>("TunVolume");
 
-                    b.Property<float>("TunWeight");
+                    b.Property<double>("TunWeight");
 
-                    b.Property<int>("Version");
+                    b.Property<double>("Version");
 
                     b.HasKey("EquipmentId");
                 });
@@ -74,19 +74,19 @@ namespace BeerXML.Migrations
 
                     b.Property<bool>("AddAfterBoil");
 
-                    b.Property<float>("Amount");
+                    b.Property<double>("Amount");
 
-                    b.Property<float>("CoarseFineDiff");
+                    b.Property<double>("CoarseFineDiff");
 
-                    b.Property<float>("Color");
+                    b.Property<double>("Color");
 
-                    b.Property<float>("DiastaticPower");
+                    b.Property<double>("DiastaticPower");
 
-                    b.Property<float>("IbuGalPerLb");
+                    b.Property<double>("IbuGalPerLb");
 
-                    b.Property<float>("MaxInBatch");
+                    b.Property<double>("MaxInBatch");
 
-                    b.Property<float>("Moisture");
+                    b.Property<double>("Moisture");
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -95,18 +95,18 @@ namespace BeerXML.Migrations
 
                     b.Property<string>("Origin");
 
-                    b.Property<float>("Protein");
+                    b.Property<double>("Protein");
 
-                    b.Property<float>("RecommendedMash");
+                    b.Property<double>("RecommendedMash");
 
                     b.Property<string>("Supplier");
 
                     b.Property<string>("Type")
                         .IsRequired();
 
-                    b.Property<int>("Version");
+                    b.Property<double>("Version");
 
-                    b.Property<float>("Yeld");
+                    b.Property<double>("Yeld");
 
                     b.HasKey("FermentableId");
                 });
@@ -125,23 +125,23 @@ namespace BeerXML.Migrations
                     b.Property<int>("HopId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<float>("Alpha");
+                    b.Property<double>("Alpha");
 
-                    b.Property<float>("Amount");
+                    b.Property<double>("Amount");
 
-                    b.Property<float>("Beta");
+                    b.Property<double>("Beta");
 
-                    b.Property<float>("Caryophyllene");
+                    b.Property<double>("Caryophyllene");
 
-                    b.Property<float>("Cohumulone");
+                    b.Property<double>("Cohumulone");
 
                     b.Property<string>("Form");
 
-                    b.Property<float>("HSI");
+                    b.Property<double>("HSI");
 
-                    b.Property<float>("Humulene");
+                    b.Property<double>("Humulene");
 
-                    b.Property<float>("Myrcene");
+                    b.Property<double>("Myrcene");
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -152,14 +152,14 @@ namespace BeerXML.Migrations
 
                     b.Property<string>("Substitutes");
 
-                    b.Property<int>("Time");
+                    b.Property<double>("Time");
 
                     b.Property<string>("Type");
 
                     b.Property<string>("Use")
                         .IsRequired();
 
-                    b.Property<int>("Version");
+                    b.Property<double>("Version");
 
                     b.HasKey("HopId");
                 });
@@ -180,24 +180,24 @@ namespace BeerXML.Migrations
 
                     b.Property<bool>("EquipAdjust");
 
-                    b.Property<float>("GrainTemp");
+                    b.Property<double>("GrainTemp");
 
                     b.Property<string>("Name")
                         .IsRequired();
 
                     b.Property<string>("Notes");
 
-                    b.Property<float>("Ph");
+                    b.Property<double>("Ph");
 
-                    b.Property<float>("SpargeTemp");
+                    b.Property<double>("SpargeTemp");
 
-                    b.Property<float>("TunTemp");
+                    b.Property<double>("TunTemp");
 
-                    b.Property<float>("TunWeight");
+                    b.Property<double>("TunWeight");
 
-                    b.Property<float>("TunspecificHeat");
+                    b.Property<double>("TunspecificHeat");
 
-                    b.Property<int>("Version");
+                    b.Property<double>("Version");
 
                     b.HasKey("MashId");
                 });
@@ -216,23 +216,23 @@ namespace BeerXML.Migrations
                     b.Property<int>("MashStepId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<float>("EndTemp");
+                    b.Property<double>("EndTemp");
 
-                    b.Property<float>("InfuseAmount");
+                    b.Property<double>("InfuseAmount");
 
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<float>("RampTime");
+                    b.Property<double>("RampTime");
 
-                    b.Property<float>("StepTemp");
+                    b.Property<double>("StepTemp");
 
-                    b.Property<float>("StepTime");
+                    b.Property<double>("StepTime");
 
                     b.Property<string>("Type")
                         .IsRequired();
 
-                    b.Property<int>("Version");
+                    b.Property<double>("Version");
 
                     b.HasKey("MashStepId");
                 });
@@ -251,7 +251,7 @@ namespace BeerXML.Migrations
                     b.Property<int>("MiscId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<float>("Amount");
+                    b.Property<double>("Amount");
 
                     b.Property<bool>("AmountIsWeight");
 
@@ -260,7 +260,7 @@ namespace BeerXML.Migrations
 
                     b.Property<string>("Notes");
 
-                    b.Property<int>("Time");
+                    b.Property<double>("Time");
 
                     b.Property<string>("Type")
                         .IsRequired();
@@ -270,7 +270,7 @@ namespace BeerXML.Migrations
 
                     b.Property<string>("UseFor");
 
-                    b.Property<int>("Version");
+                    b.Property<double>("Version");
 
                     b.HasKey("MiscId");
                 });
@@ -289,36 +289,36 @@ namespace BeerXML.Migrations
                     b.Property<int>("RecipeId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Age");
+                    b.Property<double>("Age");
 
-                    b.Property<float>("AgeTemp");
+                    b.Property<double>("AgeTemp");
 
                     b.Property<string>("AsstBrewer");
 
-                    b.Property<float>("BatchSize");
+                    b.Property<double>("BatchSize");
 
-                    b.Property<float>("BoilSize");
+                    b.Property<double>("BoilSize");
 
-                    b.Property<int>("BoilTime");
+                    b.Property<double>("BoilTime");
 
                     b.Property<string>("Brewer")
                         .IsRequired();
 
-                    b.Property<float>("Carbonation");
+                    b.Property<double>("Carbonation");
 
-                    b.Property<float>("CarbonationTemp");
+                    b.Property<double>("CarbonationTemp");
 
                     b.Property<string>("Date");
 
-                    b.Property<float>("Efficiency");
+                    b.Property<double>("Efficiency");
 
                     b.Property<double>("FG");
 
-                    b.Property<int>("FermentationStages");
+                    b.Property<double>("FermentationStages");
 
                     b.Property<bool>("ForcedCarbonation");
 
-                    b.Property<float>("KegPrimingFactor");
+                    b.Property<double>("KegPrimingFactor");
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -327,32 +327,32 @@ namespace BeerXML.Migrations
 
                     b.Property<double>("OG");
 
-                    b.Property<int>("PrimaryAges");
+                    b.Property<double>("PrimaryAges");
 
-                    b.Property<float>("PrimaryTemp");
+                    b.Property<double>("PrimaryTemp");
 
-                    b.Property<float>("PrimingSugarEquiv");
+                    b.Property<double>("PrimingSugarEquiv");
 
                     b.Property<string>("PrimingSugarName");
 
-                    b.Property<int>("SecondaryAge");
+                    b.Property<double>("SecondaryAge");
 
-                    b.Property<float>("SecondaryTemp");
+                    b.Property<double>("SecondaryTemp");
 
-                    b.Property<int?>("StyleStyleId");
+                    b.Property<int>("StyleId");
 
                     b.Property<string>("TasteNotes");
 
-                    b.Property<float>("TasteRating");
+                    b.Property<double>("TasteRating");
 
-                    b.Property<int>("TertiaryAge");
+                    b.Property<double>("TertiaryAge");
 
-                    b.Property<float>("TertiaryTemp");
+                    b.Property<double>("TertiaryTemp");
 
                     b.Property<string>("Type")
                         .IsRequired();
 
-                    b.Property<int>("Version");
+                    b.Property<double>("Version");
 
                     b.HasKey("RecipeId");
                 });
@@ -362,13 +362,13 @@ namespace BeerXML.Migrations
                     b.Property<int>("StyleId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<float>("AbvMax");
+                    b.Property<double>("AbvMax");
 
-                    b.Property<float>("AbvMin");
+                    b.Property<double>("AbvMin");
 
-                    b.Property<float>("CarbMax");
+                    b.Property<double>("CarbMax");
 
-                    b.Property<float>("CarbMin");
+                    b.Property<double>("CarbMin");
 
                     b.Property<string>("Category")
                         .IsRequired();
@@ -376,19 +376,19 @@ namespace BeerXML.Migrations
                     b.Property<string>("CategoryNumber")
                         .IsRequired();
 
-                    b.Property<float>("ColorMax");
+                    b.Property<double>("ColorMax");
 
-                    b.Property<float>("ColorMin");
+                    b.Property<double>("ColorMin");
 
                     b.Property<string>("Examples");
 
-                    b.Property<float>("FgMax");
+                    b.Property<double>("FgMax");
 
-                    b.Property<float>("FgMin");
+                    b.Property<double>("FgMin");
 
-                    b.Property<float>("IbuMax");
+                    b.Property<double>("IbuMax");
 
-                    b.Property<float>("IbuMin");
+                    b.Property<double>("IbuMin");
 
                     b.Property<string>("Ingredients");
 
@@ -397,9 +397,9 @@ namespace BeerXML.Migrations
 
                     b.Property<string>("Notes");
 
-                    b.Property<float>("OgMax");
+                    b.Property<double>("OgMax");
 
-                    b.Property<float>("OgMin");
+                    b.Property<double>("OgMin");
 
                     b.Property<string>("Profile");
 
@@ -422,26 +422,26 @@ namespace BeerXML.Migrations
                     b.Property<int>("WaterId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<float>("Amount");
+                    b.Property<double>("Amount");
 
-                    b.Property<float>("Bicarbonate");
+                    b.Property<double>("Bicarbonate");
 
-                    b.Property<float>("Calcium");
+                    b.Property<double>("Calcium");
 
-                    b.Property<float>("Chloride");
+                    b.Property<double>("Chloride");
 
-                    b.Property<float>("Magnesium");
+                    b.Property<double>("Magnesium");
 
                     b.Property<string>("Name")
                         .IsRequired();
 
                     b.Property<string>("Notes");
 
-                    b.Property<float>("Ph");
+                    b.Property<double>("Ph");
 
-                    b.Property<float>("Sodium");
+                    b.Property<double>("Sodium");
 
-                    b.Property<float>("Sulfate");
+                    b.Property<double>("Sulfate");
 
                     b.Property<int>("Version");
 
@@ -581,7 +581,7 @@ namespace BeerXML.Migrations
                 {
                     b.HasOne("BeerXML.Models.Style")
                         .WithMany()
-                        .HasForeignKey("StyleStyleId");
+                        .HasForeignKey("StyleId");
                 });
 
             modelBuilder.Entity("BeerXML.Models.WaterRecipe", b =>

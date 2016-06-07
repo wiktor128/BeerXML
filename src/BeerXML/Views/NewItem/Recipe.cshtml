@@ -4,7 +4,10 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h3 class="ui header">New Recipe</h3>
+
+<div class="row">
+    <h3 class="ui header">New Recipe</h3>
+</div>
 <form class="" method="post" asp-action="Recipe" asp-controller="NewItem">
     <div class="row">
         <div class="col s12 no-padding">
@@ -53,7 +56,7 @@
                 @Html.Partial("~/Views/NewItem/Partial/_MashStepService.cshtml", Model)
             </div>
             <div class="row right-align">
-                <div class="col m3 s12 offset-m9">
+                <div class="col m4 s12 offset-m8">
                     <button class="waves-effect waves-light btn tab-prev" type="button">
                         previous
                     </button>

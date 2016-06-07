@@ -17,6 +17,13 @@ namespace BeerXML.Controllers
 
         public IActionResult Index()
         {
+            
+            Yeast yeast = db.Yeast.FirstOrDefault();
+            Equipment equipment = db.Equipment.FirstOrDefault();
+            Mash mash = db.Mash.FirstOrDefault();
+            Style style = db.Style.FirstOrDefault();
+
+            Recipe recipe = db.Recipes.FirstOrDefault();
             List<Recipe> recipes = db.Recipes.ToList();
 
             return View(recipes);

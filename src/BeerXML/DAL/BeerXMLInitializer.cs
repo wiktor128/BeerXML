@@ -91,7 +91,7 @@ namespace BeerXML.DAL
 
             try
             {
-                context.SaveChanges();
+                //context.SaveChanges();
             }
             catch (Exception e)
             {

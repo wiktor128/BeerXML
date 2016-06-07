@@ -171,6 +171,10 @@ namespace BeerXML.Models
             //    .HasMany(s => s.Recipes)
             //    .WithOne(r => r.Style)
             //    .HasForeignKey(s => s.RecipeId);
+            modelBuilder.Entity<Recipe>()
+                .HasOne<Style>(r => r.Style)
+                .WithMany(s => s.Recipes)
+                .HasForeignKey(r => r.StyleId);
 
 
         }// still not sure how it works xD
