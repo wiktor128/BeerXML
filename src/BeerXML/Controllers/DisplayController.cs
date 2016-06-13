@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using BeerXML.Models;
 using BeerXML.CustomValidation;
+using System.Xml.Serialization;
+using System.IO;
+using System.Text;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -29,7 +32,7 @@ namespace BeerXML.Controllers
             return View(recipes);
         }
 
-        public IActionResult Recipe(int id)
+        public FileResult Recipe(int id)
         {
             RecipeViewModel rvm = new RecipeViewModel();
 
@@ -100,11 +103,40 @@ namespace BeerXML.Controllers
             //                        .FirstOrDefault().MashId)
             //                .FirstOrDefault();
             rvm.Style = rvm.Recipe.Style;
+            rvm.Recipe.Waters.Add(rvm.Water);
+            rvm.Recipe.Hops.Add(rvm.Hop);
+            rvm.Recipe.Equipments.Add(rvm.Equipment);
+            rvm.Recipe.Fermentables.Add(rvm.Fermentable);
+            rvm.Recipe.Mashs.Add(rvm.Mash);
+            foreach (var item in rvm.MashSteps)
+            {
+                rvm.Mash.MashSteps.Add(item);
+            }
+            rvm.Recipe.Miscs.Add(rvm.Misc);     
+            rvm.Recipe.Yeasts.Add(rvm.Yeast);
+            rvm.Recipe.Style = rvm.Style;
 
 
 
-            return View(rvm);
+            // serialization
+            XmlSerializer serializer = new XmlSerializer(typeof(Recipe));
+            StringBuilder sb = new StringBuilder();
+            StringWriter writer = new StringWriter(sb);
+            serializer.Serialize(writer, rvm.Recipe);
+            writer.Close();
+
+            var contentType = "text/xml";
+            var content = sb.ToString();
+            var bytes = Encoding.UTF8.GetBytes(content);
+            var result = new FileContentResult(bytes, contentType);
+            result.FileDownloadName = rvm.Recipe.Name + ".xml";
+            return result;
+
+            //byte[] fileBytes = System.IO.File.ReadAllBytes(sb.ToString());
+            //string fileName = rvm.Recipe.Name + ".xml";
+            //return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+
+            //return View(rvm);
         }
-    
     }
 }

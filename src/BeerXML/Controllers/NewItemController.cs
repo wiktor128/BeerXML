@@ -418,6 +418,7 @@ namespace BeerXML.Controllers
             Recipe recipe = (Recipe)deserializer.Deserialize(reader);
             reader.Close();
 
+            recipe.SaveAfterSerialization();
             // todo save deserialized object
 
             return RedirectToAction("Index", "Display");

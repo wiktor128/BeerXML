@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 namespace BeerXML.Models
 {
     [XmlRoot("RECIPE")]
-    public class Recipe // to do conditional
+    public class Recipe // todo conditional property
     {
         [XmlIgnore]
         [ScaffoldColumn(false)]
@@ -166,12 +166,12 @@ namespace BeerXML.Models
         [Range(0, double.MaxValue, ErrorMessage = "The value must be greater than 0")]
         public double KegPrimingFactor{ get; set; }
 
-        #region XML Only Fields
+        #region XML De/Serialization
         [XmlArray("EQUIPMENTS")]
         [XmlArrayItem("EQUIPMENT")]
         [NotMapped]
         [ScaffoldColumn(false)]
-        public List<Equipment> Equipments;
+        public List<Equipment> Equipments = new List<Equipment>();
 
         [XmlElement("EQUIPMENT")]
         [NotMapped]
@@ -197,36 +197,36 @@ namespace BeerXML.Models
         [XmlArrayItem("HOP")]
         [NotMapped]
         [ScaffoldColumn(false)]
-        public List<Hop> Hops;
+        public List<Hop> Hops = new List<Hop>();
 
         [XmlArray("FERMENTABLES")]
         [XmlArrayItem("FERMENTABLE")]
         [NotMapped]
         [ScaffoldColumn(false)]
-        public List<Fermentable> Fermentables;
+        public List<Fermentable> Fermentables = new List<Fermentable>();
 
         [XmlArray("MISCS")]
         [XmlArrayItem("MISC")]
         [ScaffoldColumn(false)]
-        public List<Misc> Miscs;
+        public List<Misc> Miscs = new List<Misc>();
 
         [XmlArray("YEASTS")]
         [XmlArrayItem("YEAST")]
         [NotMapped]
         [ScaffoldColumn(false)]
-        public List<Yeast> Yeasts;
+        public List<Yeast> Yeasts = new List<Yeast>();
 
         [XmlArray("WATERS")]
         [XmlArrayItem("WATER")]
         [NotMapped]
         [ScaffoldColumn(false)]
-        public List<Water> Waters;
+        public List<Water> Waters = new List<Water>();
 
         [XmlArray("MASHS")]
         [XmlArrayItem("MASH")]
         [NotMapped]
         [ScaffoldColumn(false)]
-        public List<Mash> Mashs;
+        public List<Mash> Mashs = new List<Mash>();
 
         [XmlElement("MASH")]
         [NotMapped]
@@ -245,6 +245,157 @@ namespace BeerXML.Models
             set
             {
                 Mashs.Add(value);
+            }
+        }
+
+        public bool SaveAfterSerialization()
+        {
+            BeerXmlContext db = new BeerXmlContext();
+
+            //save Style
+            var styleEnt = db.Style.Add(this.Style).Entity;
+
+            //save Recipe
+            this.StyleId = styleEnt.StyleId;
+            var recipeEnt = db.Recipes.Add(this).Entity;
+
+            //save Waters
+            if (Waters != null)
+            {
+                foreach (var item in Waters)
+                {
+                    var waterEnt = db.Waters.Add(item).Entity;
+                    db.WatersRecipes.Add(new WaterRecipe()
+                    {
+                        Recipe = recipeEnt,
+                        RecipeId = recipeEnt.RecipeId,
+                        Water = waterEnt,
+                        WaterId = waterEnt.WaterId
+                    });
+                }
+            }
+
+            //save Hops
+            if (Hops != null)
+            {
+                foreach (var item in Hops)
+                {
+                    var hopEnt = db.Hops.Add(item).Entity;
+                    db.HopRecipes.Add(new HopRecipe()
+                    {
+                        Recipe = recipeEnt,
+                        RecipeId = recipeEnt.RecipeId,
+                        Hop = hopEnt,
+                        HopId = hopEnt.HopId
+                    });
+                }
+            }
+
+            //save Fermentables
+            if (Fermentables != null)
+            {
+                foreach (var item in Fermentables)
+                {
+                    var fermentableEnt = db.Fermentable.Add(item).Entity;
+                    db.FermentableRecipes.Add(new FermentableRecipe()
+                    {
+                        Recipe = recipeEnt,
+                        RecipeId = recipeEnt.RecipeId,
+                        Fermentable = fermentableEnt,
+                        FermentableId = fermentableEnt.FermentableId
+                    });
+                }
+            }
+
+            //save Yeasts
+            if (Yeasts != null)
+            {
+                foreach (var item in Yeasts)
+                {
+                    var yeastEnt = db.Yeast.Add(item).Entity;
+                    db.YeastRecipe.Add(new YeastRecipe()
+                    {
+                        Recipe = recipeEnt,
+                        RecipeId = recipeEnt.RecipeId,
+                        Yeast = yeastEnt,
+                        YeastId = yeastEnt.YeastId
+                    });
+                }
+            }
+
+            //save Miscs
+            if (Miscs != null)
+            {
+                foreach (var item in Miscs)
+                {
+                    var miscEnt = db.Misc.Add(item).Entity;
+                    db.MiscRecipe.Add(new MiscRecipe()
+                    {
+                        Recipe = recipeEnt,
+                        RecipeId = recipeEnt.RecipeId,
+                        Misc = miscEnt,
+                        MiscId = miscEnt.MiscId
+                    });
+                }
+            }
+
+            //save Equipments
+            if (Equipments != null)
+            {
+                foreach (var item in Equipments)
+                {
+                    var equipmentEnt = db.Equipment.Add(item).Entity;
+                    db.EquipmentRecipe.Add(new EquipmentRecipe()
+                    {
+                        Recipe = recipeEnt,
+                        RecipeId = recipeEnt.RecipeId,
+                        Equipment = equipmentEnt,
+                        EquipmentId = equipmentEnt.EquipmentId
+                    });
+                }
+            }
+
+            // save Mashs and MashSteps
+            if (Mashs != null)
+            {
+                foreach (var itemMash in Mashs)
+                {
+                    var mashEnt = db.Mash.Add(itemMash).Entity;
+                    db.MashRecipe.Add(new MashRecipe()
+                    {
+                        Recipe = recipeEnt,
+                        RecipeId = recipeEnt.RecipeId,
+                        Mash = mashEnt,
+                        MashId = mashEnt.MashId
+                    });
+                    if (itemMash.MashSteps != null)
+                    {
+                        foreach (var itemStep in itemMash.MashSteps)
+                        {
+                            if (itemStep.Name != null) //  zabezpieczenie z powodu luki w oknie modal js
+                            {
+                                var mashStepEnt = db.MashStep.Add(itemStep).Entity;
+
+                                var mashStepMash = db.MashStepMash.Add(new MashStepMash()
+                                {
+                                    Mash = mashEnt,
+                                    MashId = mashEnt.MashId,
+                                    MashStep = mashStepEnt,
+                                    MashStepId = mashStepEnt.MashStepId
+                                }).Entity;
+                            }
+                        }
+                    }
+                }
+            }
+            try
+            {
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
             }
         }
         #endregion

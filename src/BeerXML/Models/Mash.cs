@@ -33,7 +33,7 @@ namespace BeerXML.Models
         public virtual List<MashStepMash> MashStepMash { get; set; }
         [XmlArray("MASH_STEPS")]
         [XmlArrayItem("MASH_STEP")]
-        public List<MashStep> MashSteps;
+        public List<MashStep> MashSteps = new List<MashStep>();
 
         [XmlElement("NOTES")]
         public string Notes { get; set; }
